@@ -1,0 +1,125 @@
+<div style="height: 100px;"></div>
+
+<style>
+  .circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 4px solid;
+    border-color: white;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .padding-40 {
+    padding: 40px !important;
+  }
+  
+  .input-custom {
+    font-weight: bold !important;
+    color: #387ef5 !important;
+    text-align: right !important;
+    margin: auto !important;
+  }
+</style>
+
+
+<ion-view view-title="Donate">
+
+  <ion-pane class="background-color-grey">
+
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Noodlio Pay | Simple Example</h1>
+    </ion-header-bar>
+
+    <ion-content class=" padding">
+
+
+      <div class="padding center" style="background-color:#59BD40; max-height:250px" ng-click="prepopulateForm()">
+        <img ng-src="{{getPic(needyPerson)}}" class="circle">
+        <h3 style="color:white;">{{needyPerson.name}}</h3>
+        <h4 ng-show="needyPerson" style="color:white;">Raised: {{needyPerson.balance | currency:USD}}</h4>
+        <h4 ng-hide="needyPerson" style="color:white;">Donate to a Friend In Need</h4>
+        <p>&nbsp;</p>
+      </div>
+
+      <div class="list">
+        <!--<div class="item item-divider">
+    Credit Card Info
+  </div>-->
+        <label class="item item-input">
+          <i class="icon ion-card"></i>&nbsp;<span class="input-label" >Card number</span>&nbsp;<label ng-click="scanCard()" ><i class="ion ion-camera" ></i></label>&nbsp;&nbsp;
+          <input type="text" maxlength="16" ng-model="FormData.number" placeholder="4242 4242 4242 4242"/>
+          
+        </label>
+
+        <label class="item item-input">
+          <i class="icon ion-calendar"></i>&nbsp;<span class="input-label">Expiry (MM/YY)</span>
+          <input type="number"  size="2" ng-model="FormData.exp_month" placeholder="01">
+          <input type="number"   size="4" ng-model="FormData.exp_year" placeholder="2020">
+        </label>
+
+
+        <label class="item item-input">
+          <i class="icon ion-ios-unlocked-outline"></i>&nbsp;<span class="input-label">Sec. Code (CVC)</span>
+          <input type="number" size="4" ng-model="FormData.cvc"/ placeholder="123">
+        </label>
+
+        <li class="item item-toggle">
+          <i class="icon ion-ios-person-outline"></i>&nbsp; Remember Me
+          <label class="toggle toggle-balanced">
+            <input type="checkbox" ng-model="FormData.rememberme">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+
+        <!--
+ <div class="item item-divider">
+    Candy Bars
+  </div>
+  -->
+        <!--<label class="range range-positive">
+          <i class="icon ion-social-usd-outline" style="color:green;"></i>
+          <input type="range" min="1" max="100" value="{{FormData.amount}}" step="1" ng-model="FormData.amount" ng-change="onRangeChange()">
+          <i class="icon ion-social-usd" style="color:green;"></i><i class="icon ion-social-usd" style="color:green;"></i>
+        </label>-->
+
+        <div class="item range range-positive">
+    <i class="icon ion-social-usd-outline"></i>
+      <input type="range" min="1" max="100" value="{{FormData.amount}}" step="1" ng-model="FormData.amount" ng-change="onRangeChange()">
+    <i class="icon ion-social-usd"></i>
+  </div>
+      </div>
+
+      <div class="padding center">
+        <!--<button class="button button-block button-balanced" ng-click="scanCard()">Donate {{FormData.amount | currency:USD}}</button>-->
+        <button class="button button-block button-balanced" ng-click="submitDonation()" ng-disabled="isFormValid() || ResponseData.loading">
+            <span ng-hide="ResponseData.loading"><i ng-show="paid" class="ion ion-android-checkmark-circle"></i>&nbsp;Donate {{FormData.amount | currency:USD}}</span>
+            <span ng-show="ResponseData.loading"><ion-spinner  icon="lines"></ion-spinner></span>
+        </button>
+      </div>
+
+      <div class="padding center">
+        <!--<p ng-show="ResponseData.loading">
+          Loading...
+        </p>-->
+        <p ng-show="ResponseData.token &&  ResponseData.error" style="color:red;">
+          Token: <strong>{{ResponseData.token}}</strong>
+        </p>
+        <p ng-show="ResponseData.paymentId &&  ResponseData.error" style="color:red;">
+          Payment Id: <strong>{{ResponseData.paymentId}}</strong>
+        </p>
+          <p ng-show="paid" style="color:green;">
+          <strong><i class="ion ion-android-checkmark-circle"></i>&nbsp;Thank you for your generous donation {{FormData.amount | currency:USD}}</strong>
+        </p>
+      </div>
+
+
+    </ion-content>
+  </ion-pane>
+
+</ion-view>
