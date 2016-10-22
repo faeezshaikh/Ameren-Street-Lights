@@ -95,23 +95,6 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
     .state('app.playlists', {
       url: '/playlists',
       views: {
