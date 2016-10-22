@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
 .controller('OpenBedsCtrl', function($scope, auth, store, $state, $timeout, 
 HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocialSharing,localStorage,$ionicModal
-,$ionicScrollDelegate,FIREBASE_URL,$cordovaCamera,$cordovaGeolocation,$cordovaLaunchNavigator,$window,$rootScope,NgMap) {
+,$ionicScrollDelegate,FIREBASE_URL,$cordovaCamera,$cordovaGeolocation,$cordovaLaunchNavigator,$window,$rootScope,NgMap,$filter) {
 
 	$scope.currentCoords;
 	$scope.map;
+	var all = [];
 	
 	function init() {
 		var needyId = $stateParams.needyId; // Not using it..really.
@@ -35,10 +36,15 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		// 	$scope.hudagents = response.data;
 		// });
 
+  $scope.data = {
+    demographic:'Family',
+  };
+
 		 var baseRef = new Firebase(FIREBASE_URL + '/openbeds');
 
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
 	  $scope.openbeds = $firebaseArray(scrollRef);
+		all = $scope.openbeds;
 			  scrollRef.scroll.next(100);
 		console.log('Open beds:', $scope.openbeds);
 		
@@ -52,6 +58,15 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	};
 	init();
 	
+	
+
+	$scope.$watch('data.demographic',function(){
+		console.log('Changed !',$scope.data.demographic);
+		if($scope.data.demographic == 'Male')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
+		if($scope.data.demographic == 'Female')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
+		if($scope.data.demographic == 'Vets')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
+		if($scope.data.demographic == 'Family')  $scope.openbeds = $filter('filter')(all, { requirement: 'Family' });
+    });
 	$scope.showDetail = function(e, agent) {
 		$scope.agent1 = agent;
 	    $scope.map.showInfoWindow('foo-iw', agent.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505

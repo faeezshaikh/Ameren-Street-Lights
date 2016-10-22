@@ -5,6 +5,16 @@ map {
   height: 100%;
 }
 
+.button-bar > .button{
+  border: 1px solid #cfcfcf;
+}
+
+.button-bar > .button:last-child {
+  border-radius: 0px 20px 20px 0px !important;
+}
+.button-bar > .button:first-child {
+    border-radius: 20px 0px 0px 20px !important;
+}
 
 </style>
 <ion-view view-title="Open Beds">
@@ -26,13 +36,20 @@ map {
 		      	({{ filtered.length}})
 		    </div>
 			 <!-- Search Bar Header -->
-
+<!--
     <div class="button-bar">
-  <a class="button" ng-click="">Family</a>
-  <a class="button">Male</a>
-  <a class="button">Female</a>
-  <a class="button">Vets</a>
-</div>
+  <a class="button" ng-click="filterBeds('family')">Family</a>
+  <a class="button" ng-click="filterBeds('male')">Male</a>
+  <a class="button" ng-click="filterBeds('female')">Female</a>
+  <a class="button" ng-click="filterBeds('vets')">Vets</a>
+</div>-->
+
+    <div class="button-bar padding">
+      <a grouped-radio="'Family'" ng-model="data.demographic">Family</a>
+       <a grouped-radio="'Vets'" ng-model="data.demographic">Vets</a>     
+      <a grouped-radio="'Male'" ng-model="data.demographic">Male</a>
+       <a grouped-radio="'Female'" ng-model="data.demographic">Female</a>
+    </div>
 		    
 		    <!-- Map Start -->
            <map center="{{currentCoords.lat}},{{currentCoords.lon}}"
