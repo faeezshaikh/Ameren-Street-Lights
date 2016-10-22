@@ -9,7 +9,7 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
