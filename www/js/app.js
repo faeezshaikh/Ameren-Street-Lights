@@ -113,6 +113,15 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+        .state('app.donatePerson', {
+        url: '/donate/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/donate.html',
+            controller: 'DonateCtrl'
+          }
+        }
+      })
 
             .state('app.hudagents', {
         url: '/hudagents',
