@@ -139,10 +139,10 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         console.log('State name = ',state.current.name);
         if (state.current.name == '' || state.current.name == 'app.chat') {
         	
-          state.go('app.playlists');
+          state.go('app.needy');
         } 
         else {
-          state.go('app.playlists');  // Default landing page
+          state.go('app.needy');  // Default landing page
         }
         return $location.path();
       });
