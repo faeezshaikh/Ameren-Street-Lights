@@ -346,10 +346,11 @@ angular.module('starter.controllers')
 	////////// [ Edit Person ] /////////////////
 
 	//  $scope.cocs = ["St. Patrick Center", "St. Martha", "St. Louis County"];
-	     $scope.SimpleData =["St. Patrick Center", "St. Martha", "St. Louis County"];
-      $scope.SimpleSelectedData = "St. Patrick Center";
+	     $scope.SimpleData =[{name:"St. Patrick Center"}, {name:"St. Martha"}, {name:"St. Louis County"}];
+      $scope.SimpleSelectedData = $scope.SimpleData[0].name;
 
-	 var services = [];
+	 var services;
+	 var coc ;
 	  $ionicModal.fromTemplateUrl('templates/editIdea.html', {
 		    scope: $scope,
 		    animation: 'slide-in-up'
@@ -376,6 +377,7 @@ angular.module('starter.controllers')
 						joiningDate: item.joiningDate.toString(),
 						referrer: item.referrer,
 						facilityName:'',
+
 				};
 
 				if(item.skills) $scope.editPerson.willingToWork = true;
@@ -383,14 +385,20 @@ angular.module('starter.controllers')
 				$scope.editPerson.food = false;
 				$scope.editPerson.medical = false;
 				$scope.editPerson.clothing = false;
+				services = item.services || [];
 				
 				$scope.editIdeaModal.show();
 	  }
 	  
+		$scope.changeSelectedItem = function(){
+				//  $scope.SimpleSelectedData = val;
+				 coc = $scope.SimpleSelectedData;
+   			console.log('cic',coc);
+			}
 		  $scope.saveEdit = function() {
 					$scope.editIdeaModal.hide();
 
-					var coc = $scope.SimpleSelectedData;
+					coc = $scope.SimpleSelectedData;
 					console.log('Selected Coc:', coc);
 					
 					var notes = $scope.editPerson.notes;
@@ -406,6 +414,8 @@ angular.module('starter.controllers')
 						var service = {service: 'Clothing',coc: coc,date:new Date().toString(),notes:notes};
 						services.push(service);
 					}
+
+					// services.push(service);
 					console.log('Services: ', services);
 					
 					var obj = {

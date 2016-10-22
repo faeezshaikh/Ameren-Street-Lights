@@ -154,8 +154,11 @@
 								<option ng-repeat="x in cocs" value="{{x}}">{{x}}</option>
 								</select>-->
 
-						<select ng-model="SimpleSelectedData" >
-							<option ng-repeat="item in SimpleData" ng-selected="{{item==SimpleSelectedData}}" value="{{item}}">{{item}}</option>
+						<!--<select ng-model="SimpleSelectedData" ng-options="item.name for item in SimpleData" ng-change="changeSelectedItem()">-->
+							<select ng-model="SimpleSelectedData" 
+        ng-options="product as product.name for product in SimpleData" ng-change="changeSelectedItem()">           
+</select>
+							
 						</select>
 						</label>
 
