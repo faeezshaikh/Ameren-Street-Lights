@@ -256,6 +256,111 @@ angular.module('starter.controllers')
 		}
 
 
+		//////// [Add New Needy] ////////
+
+
+		 $ionicModal.fromTemplateUrl('templates/addNewNeedy.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.composeIdeaModal = modal;
+		});
+
+		$scope.openComposer = function() {
+		  $scope.newPerson = {};
+			$scope.removePicture();
+		 	$scope.composeIdeaModal.show();
+	  }
+  
+	  $scope.closeComposer = function() {
+		  $scope.composeIdeaModal.hide();
+		  $scope.editIdeaModal.hide();
+	  }
+	  
+		  		//// Confirmation Modal ////////
+	  $ionicModal.fromTemplateUrl('templates/confirmationModal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.confirmationModal = modal;
+		});
+	  
+
+	  $scope.openConfirmation = function() {
+		  $scope.confirmationModal.show();
+	  }
+	    $scope.closeConfirmation = function() {
+		  $scope.confirmationModal.hide();
+	  }
+
+
+			$scope.autoFill = function () {
+				$scope.newPerson = {
+					name: 'James McNeil',
+					dob: new Date('Nov 17, 1980'),
+					phone: '314-876-3452',
+					email: 'ds@gmail.com',
+					address: '30 Plaza Sq. St Louis MO 63010',
+					id: lastPersonId + 1,
+					skills: 'plumber, electrician',
+					story: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+					lastUpdated: new Date().toString(),
+					likes: 0,
+					willingToWork: true,
+					cameraPic: $scope.imageData || null
+				};
+			}
+
+ 		$scope.finalSubmit = function() {
+		  $scope.confirmationModal.hide();
+		  $scope.composeIdeaModal.hide();
+		  var obj = {
+				  // name: PersonService.GetUserDetails().name, // We could do that, but if admin wants to secretly update an idea it would expose the admin
+					name: $scope.newPerson.name,
+					dob: $scope.newPerson.dob.toString(),
+					phone:$scope.newPerson.phone,
+					email:$scope.newPerson.email,
+					address:$scope.newPerson.address || 'none',
+				  id:lastPersonId+1,
+					skills: $scope.newPerson.skills,
+					story:$scope.newPerson.story,
+				  order:lastPersonOrder-1,
+				  lastUpdated: new Date().toString(),
+				 // picture: {thumbnail : PersonService.GetUserDetails().img},
+				  likes:0,
+				  cameraPic:$scope.imageData || null,
+					balance:0,
+					joiningDate: new Date().toString(),
+					referrer: PersonService.GetUserDetails().name
+				  };
+		  
+		  
+					var posOptions = {timeout: 10000, enableHighAccuracy: false};
+					$cordovaGeolocation
+						.getCurrentPosition(posOptions)
+						.then(function (position) {
+								var lat  = position.coords.latitude
+								var long = position.coords.longitude;
+								
+								obj.lat = lat;
+								obj.long = long;
+								
+							console.log('Final object adding',$scope.newPerson);
+								
+							$scope.items.$add(obj);   // Adding to Firebase after getting current coords.
+							
+							var fredNameRef = new Firebase(FIREBASE_URL + '/lastPerson');
+							fredNameRef.update({ lastPersonId: lastPersonId+1, lastPersonOrder: lastPersonOrder-1 });
+							
+							$ionicScrollDelegate.$getByHandle('feeds-page').scrollTop(true);
+						}, function(err) {
+							// error
+								console.log('Error in getting GeoLocation',error);
+						});
+	
+	  }
+		//////// [Add New Needy Ends] ////////
+
 
     
 	});
