@@ -6,6 +6,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	$scope.currentCoords;
 	$scope.map;
 	var all = [];
+	$scope.showPlusButton = true;
 	
 	function init() {
 		var needyId = $stateParams.needyId; // Not using it..really.
@@ -18,12 +19,13 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 		if(needyId) {
 			var baseRef = new Firebase(FIREBASE_URL + '/needy/' + needyId);
+			$scope.showPlusButton = false;
 			
 			baseRef.on("value", function(snapshot) {
 				var needyPerson = snapshot.val();
 				lat = needyPerson.lat;
 				lon = needyPerson.long;
-				requirement = 'Veteran'; // TODO: Fetch from Firebase
+				requirement = 'Male'; // TODO: Fetch from Firebase
 
 				}, function (errorObject) {
 					console.log("The read failed: " + errorObject.code);
@@ -42,7 +44,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 				demographic:'Family',
 			};
 
-			if(requirement == 'Veteran')  $scope.data.demographic = 'Veteran';
+			if(requirement == 'Male')  $scope.data.demographic = 'Male';
 
 		 var baseRef = new Firebase(FIREBASE_URL + '/openbeds');
 
@@ -97,7 +99,74 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	 
 	
 
-	
+	//// Add new Shelter ///
+
+
+	 $ionicModal.fromTemplateUrl('templates/addNewShelter.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.composeIdeaModal = modal;
+		});
+
+		$scope.openComposer = function() {
+		  // $scope.newPerson = {};
+			// $scope.removePicture();
+		 	$scope.composeIdeaModal.show();
+	  }
+  
+	  $scope.closeComposer = function() {
+		  $scope.composeIdeaModal.hide();
+		  // $scope.editIdeaModal.hide();
+	  }
+
+
+	$scope.autoFill = function () {
+				$scope.newShelter = {
+					name: 'St. Patrick Center',
+					dob: new Date('Nov 17, 2016'),
+					phone: '314-876-3452',
+					email: 'julied@stpatrick.com',
+					address: '30 Plaza Sq. St Louis MO 63010',
+					// id: lastPersonId + 1,
+					family: true,
+					beds: 5
+				};
+			}
+
+
+ 		$scope.finalSubmit = function() {
+		  // $scope.confirmationModal.hide();
+		  $scope.composeIdeaModal.hide();
+			var obj = 
+			{
+"agcid": "82040",
+"adr1": "1901 S 11th St",
+"adr2": "null",
+"city": "Saint Louis",
+"email": "deborah.smartsolutions@gmail.com",
+"fax": "314-436-0011",
+"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
+"phone1": "314-436-1400",
+"statecd": "MO",
+"weburl": "http://yehstl.org",
+"zipcd": "63104-3915",
+"agc_ADDR_LONGITUDE": "-90.20798",
+"agc_ADDR_LATITUDE": "38.602318",
+"languages": "ENG",
+"services": "DFC,FBC,HMC,PPC,RHC,RMC",
+"date":"",
+"time":"",
+"requirement":"Veteran"
+}
+			
+			// $scope.openbeds.push();
+			$timeout(function(){
+				$scope.openbeds.$add(obj); 
+			},700);
+				
+		 }
+	//// Add New Shelter ///
 		
 		
 	

@@ -1,0 +1,76 @@
+<ion-modal-view>
+
+	<ion-header-bar class="bar bar-header bar-balanced">
+		<h1 class="title">Add a Needy Shelter Opening</h1>
+		<button class="button button-clear button-primary" ng-click="closeComposer()">Cancel</button>
+	</ion-header-bar>
+
+
+	<ion-content class="padding">
+
+		<div class="list">
+
+			<p></p>
+
+				<div class="item item-divider" ng-click="autoFill()">
+						Shelter Details
+					</div>
+					<label class="item item-input item-stacked-label">
+              <span class="input-label">Name*&nbsp;<small ng-show="" style="font-size:50%">Some validation</small></span>
+              <input ng-model="newShelter.name" type="text" placeholder="Full Name">
+            </label>
+
+
+			<label class="item item-input item-stacked-label">
+				  		<span class="input-label">Availability Date*&nbsp;</span>
+              			<!-- <input ng-model="newShelter.age" type="number" min="1" max="99" placeholder="Age"> -->
+              			<input type="date" placeholder="MM/DD/YYYY" ng-model="newShelter.dob">
+		</label>
+				 	<label class="item item-input item-stacked-label" ng-hide="newShelter.useLocation">
+              <span class="input-label">Address*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
+              <textarea ng-model="newShelter.address" type="text" placeholder="Last known Address" rows="5" cols="50"></textarea>
+            </label>
+
+		
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Phone&nbsp;<small  style="font-size:50%">Min 10 chars</small></span>
+              <input ng-model="newShelter.phone" type="text" placeholder="(314)-234-9876" maxlength="12"></textarea>
+            </label>
+
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Email&nbsp;</span>
+              <input ng-model="newShelter.email" type="email" placeholder="someone@gmail.com"></textarea>
+            </label>
+
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Number of Beds&nbsp;</span>
+              <input ng-model="newShelter.beds" type="text" placeholder="5,10 or 15"></textarea>
+            </label>
+
+				<div class="item item-divider">
+						Requirement
+					</div>
+	
+
+
+				<ion-checkbox ng-model="newShelter.family">Family</ion-checkbox>
+					<ion-checkbox ng-model="newShelter.male">Male</ion-checkbox>	
+					<ion-checkbox ng-model="newShelter.female">Female</ion-checkbox>
+
+				
+
+
+		</div>
+	</ion-content>
+
+	<!-- Send Message Footer Area -->
+	<ion-footer-bar keyboard-attach class="bar-balanced item-input-inset">
+
+		<button class="button button-block button-balanced" ng-disabled="isInfoValid(newShelter)" ng-click="finalSubmit()">
+			<i class="ion-ios-paperplane"></i>&nbsp;&nbsp;Submit
+		</button >
+	</ion-footer-bar >
+  </ion-modal-view>

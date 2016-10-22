@@ -40,7 +40,7 @@ map {
 
     <div class="button-bar padding">
       <a grouped-radio="'Family'" ng-model="data.demographic">Family</a>
-       <a grouped-radio="'Veteran'" ng-model="data.demographic">Vets</a>     
+       <!--<a grouped-radio="'Veteran'" ng-model="data.demographic">Vsets</a>     -->
       <a grouped-radio="'Male'" ng-model="data.demographic">Male</a>
        <a grouped-radio="'Female'" ng-model="data.demographic">Female</a>
     </div>
@@ -99,7 +99,10 @@ map {
      
         
       </ion-content>
-      
+         <button class="button button-float" ng-click="openComposer()" ng-show="showPlusButton">
+	        <i class="icon ion-plus"></i>
+	    </button>
+
     </ion-pane>
  </ion-view>
 
