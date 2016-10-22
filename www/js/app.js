@@ -66,6 +66,15 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
+  .state('app.settings', {
+    	   url: '/settings',
+    	   views: {
+    	          'menuContent': {
+    	            templateUrl: 'templates/settings.html',
+    	            controller: 'SettingsCtrl'
+    	          }
+    	        }
+      })
      .state('app.share', {
         url: '/share',
         views: {
@@ -75,7 +84,7 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
-      
+
   .state('app.search', {
     url: '/search',
     views: {

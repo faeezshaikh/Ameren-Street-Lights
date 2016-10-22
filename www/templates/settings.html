@@ -1,1 +1,57 @@
-<h1>Settings<h1>
+<ion-view title="Settings" class="show">
+  <ion-pane class="background-color-grey">
+    <ion-nav-buttons side="secondary">
+      <button class="button button-clear" ng-click="user.toggleFavorite(show)">
+      </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+      <div class="list">
+        <div class="item item-divider">
+          Notifications
+        </div>
+
+        <li class="item item-toggle">
+          Receive Push Notifications
+          <label class="toggle toggle-balanced">
+            <input type="checkbox" checked>
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+
+        <div class="item item-divider">
+          Twitter Monitoring
+        </div>
+        <ion-list>
+
+          <ion-checkbox ng-repeat="item in checkboxes" ng-model="item.checked" ng-checked="item.checked">
+            {{ item.text }}
+          </ion-checkbox>
+
+        </ion-list>
+        <div class="item item-divider">
+          Search Radius
+        </div>
+        <li class="item ">
+
+          <small>Show Needy in radius of followig miles:</small>&nbsp;<span style="color:green;">{{user.value}}</span>
+          <div class="range range-positive">
+            <i class="icon ion-ios-location-outline"  style="color:red;"></i>
+            <input type="range" min="1" max="10" value="{{user.min}}" step="1" ng-model="user.value" ng-change="onRangeChange()"> 
+            	
+            <i class="icon ion-ios-location"  style="color:red;"></i>
+          </div>
+
+        </li>
+      </div>
+
+      <button style="width:80%;margin-left:auto;margin-right:auto;" class="button button-block button-balanced" ng-click="logout()">
+        Logout
+      </button>
+      
+
+    </ion-content>
+  </ion-pane>
+</ion-view>
