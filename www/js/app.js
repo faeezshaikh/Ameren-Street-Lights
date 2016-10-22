@@ -23,6 +23,24 @@ angular.module('starter', ['ionic',  'ionic.cloud','starter.controllers', 'auth0
       StatusBar.styleDefault();
     }
   });
+
+      
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams,$location) {
+	    var requireLogin = toState.data.requireLogin;
+
+	    if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
+	      event.preventDefault();
+	      // get me a login modal!
+	      $ionicModal.fromTemplateUrl('templates/login.html', {
+				scope : $rootScope
+			}).then(function(modal) {
+				$rootScope.explModal = modal;
+				$rootScope.explModal.show();
+			});
+	    }
+	  });
+
+    
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
