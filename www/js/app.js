@@ -202,6 +202,16 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         }
       })
 
+   .state('app.news', {
+        url: '/news',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/news.html',
+            controller: 'NewsCtrl'
+          }
+        }
+      })
+  
      
         .state('app.needyHudAgents', {
         url: '/hudagents/:needyId',
