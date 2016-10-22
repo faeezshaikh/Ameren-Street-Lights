@@ -66,6 +66,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
+     .state('app.share', {
+        url: '/share',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/share.html',
+            controller: 'SocialShareCtrl'
+          }
+        }
+      })
+      
   .state('app.search', {
     url: '/search',
     views: {
