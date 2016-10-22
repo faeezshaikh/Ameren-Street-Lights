@@ -363,6 +363,12 @@ angular.module('starter.controllers')
 
 
 	////////// [ Edit Person ] /////////////////
+
+	//  $scope.cocs = ["St. Patrick Center", "St. Martha", "St. Louis County"];
+	     $scope.SimpleData =["St. Patrick Center", "St. Martha", "St. Louis County"];
+      $scope.SimpleSelectedData = "St. Patrick Center";
+
+	 var services = [];
 	  $ionicModal.fromTemplateUrl('templates/editIdea.html', {
 		    scope: $scope,
 		    animation: 'slide-in-up'
@@ -388,7 +394,7 @@ angular.module('starter.controllers')
 				  	// cameraPic:$scope.imageData || null,
 						joiningDate: item.joiningDate.toString(),
 						referrer: item.referrer,
-						facilityName:''
+						facilityName:'',
 				};
 
 				if(item.skills) $scope.editPerson.willingToWork = true;
@@ -396,11 +402,31 @@ angular.module('starter.controllers')
 				$scope.editPerson.food = false;
 				$scope.editPerson.medical = false;
 				$scope.editPerson.clothing = false;
+				
 				$scope.editIdeaModal.show();
 	  }
 	  
 		  $scope.saveEdit = function() {
 					$scope.editIdeaModal.hide();
+
+					var coc = $scope.SimpleSelectedData;
+					console.log('Selected Coc:', coc);
+					
+					var notes = $scope.editPerson.notes;
+					if ($scope.editPerson.food) {
+						var service = {service: 'Food',coc: coc,date:new Date().toString(),notes:notes};
+						services.push(service);
+					}
+					if ($scope.editPerson.medical) {
+						var service = {service: 'Medical',coc: coc,date:new Date().toString(),notes:notes};
+						services.push(service);
+					}
+						if ($scope.editPerson.clothing) {
+						var service = {service: 'Clothing',coc: coc,date:new Date().toString(),notes:notes};
+						services.push(service);
+					}
+					console.log('Services: ', services);
+					
 					var obj = {
 							name: $scope.editPerson.name,
 							dob: $scope.editPerson.dob.toString(),
@@ -412,11 +438,7 @@ angular.module('starter.controllers')
 							lastUpdated: new Date().toString(),
 							cameraPic:$scope.imageData || null, ////// ???
 							referrer: $scope.editPerson.referrer,    ////// ????
-							facilityName: $scope.editPerson.facilityName,
-							notes: $scope.editPerson.notes,
-							food: $scope.editPerson.food,
-							medical: $scope.editPerson.medical,
-							clothing: $scope.editPerson.clothing,
+							services: services
 					};
 					var url = FIREBASE_URL + '/needy/' + $scope.idToEdit;
 					var fredNameRef = new Firebase(url);
@@ -424,8 +446,7 @@ angular.module('starter.controllers')
 	  }
 
 		$scope.autoFillEditPage = function() {
-			$scope.editPerson.facilityName = "St. Martha's Hall - CoC Member";
-			$scope.editPerson.notes = "Heather was treated for cold and flu and given flu shots and new clothes at St. Martha's Hall on Nov 17,9017.";
+			$scope.editPerson.notes = "Helped at St Patrick Center";
 		}
 		////////// [ Edit Person End ] /////////////////
 

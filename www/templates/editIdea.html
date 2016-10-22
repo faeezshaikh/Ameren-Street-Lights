@@ -140,10 +140,25 @@
 						<ion-checkbox ng-model="editPerson.medical">Medical </ion-checkbox>
 						<ion-checkbox ng-model="editPerson.clothing">Clothing</ion-checkbox>
 					
-						<label class="item item-input item-stacked-label" ng-hide="editPerson.useLocation">
+						<!--<label class="item item-input item-stacked-label" ng-hide="editPerson.useLocation">
               <span class="input-label">CoC Name*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
               <textarea ng-model="editPerson.facilityName" type="text" placeholder="Facility which provided services" rows="3" cols="50"></textarea>
-            </label>
+            </label>-->
+
+						<label class="item item-input item-select">
+							<div class="input-label">
+								CoC Member
+							</div>
+							<!--<select ng-model="selectedCoC" ng-options="x for x in cocs"></select>-->
+							<!--<select ng-model="selectedCoC">
+								<option ng-repeat="x in cocs" value="{{x}}">{{x}}</option>
+								</select>-->
+
+						<select ng-model="SimpleSelectedData" >
+							<option ng-repeat="item in SimpleData" ng-selected="{{item==SimpleSelectedData}}" value="{{item}}">{{item}}</option>
+						</select>
+						</label>
+
 							<label class="item item-input item-stacked-label" ng-hide="editPerson.useLocation">
               <span class="input-label">Notes*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
               <textarea ng-model="editPerson.notes" type="text" placeholder="Facility which provided services" rows="3" cols="50"></textarea>
