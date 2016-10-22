@@ -379,7 +379,7 @@ angular.module('starter.controllers')
 						imageData: item.imageData,
 						dob: new Date(item.dob),
 						phone: item.phone,
-						email:item.email,
+						email:item.email || 'faeez@awesome.com',
 						address:item.address,
 						skills: item.skills,
 						story:	item.story,
@@ -387,11 +387,15 @@ angular.module('starter.controllers')
 				  	lastUpdated: new Date().toString(),
 				  	// cameraPic:$scope.imageData || null,
 						joiningDate: item.joiningDate.toString(),
-						referrer: item.referrer
+						referrer: item.referrer,
+						facilityName:''
 				};
 
 				if(item.skills) $scope.editPerson.willingToWork = true;
 		
+				$scope.editPerson.food = false;
+				$scope.editPerson.medical = false;
+				$scope.editPerson.clothing = false;
 				$scope.editIdeaModal.show();
 	  }
 	  
@@ -407,12 +411,22 @@ angular.module('starter.controllers')
 							story:	$scope.editPerson.story,
 							lastUpdated: new Date().toString(),
 							cameraPic:$scope.imageData || null, ////// ???
-							referrer: $scope.editPerson.referrer    ////// ????
+							referrer: $scope.editPerson.referrer,    ////// ????
+							facilityName: $scope.editPerson.facilityName,
+							notes: $scope.editPerson.notes,
+							food: $scope.editPerson.food,
+							medical: $scope.editPerson.medical,
+							clothing: $scope.editPerson.clothing,
 					};
 					var url = FIREBASE_URL + '/needy/' + $scope.idToEdit;
 					var fredNameRef = new Firebase(url);
 					fredNameRef.update(obj);
 	  }
+
+		$scope.autoFillEditPage = function() {
+			$scope.editPerson.facilityName = "St. Martha's Hall - CoC Member";
+			$scope.editPerson.notes = "Heather was treated for cold and flu and given flu shots and new clothes at St. Martha's Hall on Nov 17,9017.";
+		}
 		////////// [ Edit Person End ] /////////////////
 
 	 
