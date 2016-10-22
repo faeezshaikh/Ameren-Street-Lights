@@ -1,0 +1,102 @@
+<!--<div style="height: 100px;"></div>-->
+<ion-view  view-title="The Needy">
+    <ion-pane class="background-color-grey">
+
+
+        <ion-content view-title="Needy" header-shrink scroll-event-interval="5" delegate-handle="feeds-page">
+
+           <div class="bar bar-header bar-balanced item-input-inset">
+                <!--<button ng-class="model.reorderFlag ? 'button button-icon ion-navicon': 'button button-icon ion-arrow-move'" ng-click="model.reorderFlag=!model.reorderFlag;"></button>-->
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input  type="search" placeholder="Search" ng-model="searchText">
+                </label>
+                <button class="button button-icon ion-android-cancel" ng-click="searchText=''" style="color:white;">
+                    
+                </button>
+
+                <span style="color:white;">({{ filtered.length}})</span>
+
+           </div>
+
+                <!--circular Fly out menu-->
+             <!--<circular options="options"></circular>-->
+
+
+            <div class="list card" ng-repeat="item in filtered = (items | filter:searchText)">
+
+              
+                    <div class="item item-thumbnail-left">
+                        <img ng-src="{{getThumbnail(item)}}" style="top:19px; border-radius:50%;border:2px solid;border-color:#E2D6D6;"> <!-- color:   #59BD40-->
+                            <a class="pull-right" ng-click="openEditor(item)" ng-show="{{isItMine(item)}}">
+                                <i class="icon ion-edit"></i>
+                            </a>
+                        <h2>{{item.name}} &nbsp;<i ng-show="isExceededStay(item.joiningDate)" class="ion ion-flag" style="color:red"></i>&nbsp;<a href="#/app/needy/{{item.$id}}" style="text-decoration:none"><i  ng-show="item.video" class="ion ion-social-youtube" style="color:red"></i></a></h2>
+                        	 <a class="pull-right" ng-click="openDeleteConfirmation(item)" ng-show="{{isItMine(item)}}">
+                                <i class="icon ion-trash-a"></i>
+                             </a>
+                        <p><strong>Age:</strong> 35</p>
+                       
+                        <p><strong>Raised:</strong>&nbsp;{{item.balance | currency:USD}}</p>
+                        
+                        <p><strong>Joined FIN:</strong>
+                             <span ng-hide="isExceededStay(item.joiningDate)" am-time-ago="item.joiningDate" ></span > 
+                             <span ng-show="isExceededStay(item.joiningDate)" style="color:red">Exceeded stay</span>
+                        </p>
+                        <p><strong>Location:</strong> Florissant, MO &nbsp;<i style="color:#398EF7;" class="ion ion-ios-navigate-outline" ng-click="launchNavigator(item)"></i></p>
+                         <p><strong>Referrer:</strong> {{item.referrer}} <i ng-hide="{{item.isReferrerVerified}}" style="color:red;" class="ion ion-alert-circled"></i> <i ng-show="{{item.isReferrerVerified}}" style="color:green;" class="ion ion-checkmark-circled"></i>&nbsp;<a ng-controller="NeedyDetailsCtrl" href="{{getTelephone(item.phone)}}"><i style="color:#398EF7;" class="ion ion-ios-telephone"></i> </a></p>
+                    </div>
+
+                  <a href="#/app/needy/{{item.$id}}" style="text-decoration:none">
+                    <div class="item item-body">
+                        <strong>My Story:</strong>
+                        <p>
+                            {{item.story | limitTo:200}}... Read More
+                        </p>
+                        <p>
+                            <a class="subdued">{{item.likes == 0 ? '' : item.likes}} {{item.likes > 1 ? 'Likes' : item.likes == 0 ? '' : 'Like'}}</a>
+                            <a ng-show="item.skills" class="subdued" href="#/app/needyJobs/{{item.$id}}"><i class="icon ion-university"></i>&nbsp;Job Openings</a>
+                            <a ng-hide="item.skills" class="subdued" href=""><i class="icon ion-university"></i>&nbsp;Add Skills</a>
+                            <a class="subdued" href="#/app/hudagents/{{item.$id}}"><i class="icon ion-home"></i>&nbsp;Hud Agents</a>
+                            <!--<a href="#" class="subdued">5 HUD Agents</a>-->
+                        </p>
+                        <div class="item tabs tabs-secondary tabs-icon-left">
+                            <a class="tab-item" ng-click="updateLikes(items.indexOf(item),item)">
+                                <i ng-class="isLiked(item) ? 'icon ion-thumbsup balanced' : 'icon ion-thumbsup'"></i> Like
+                            </a>
+
+                            <a class="tab-item" href="#/app/donate/{{item.$id}}">
+                                <i ng-hide="isExceededStay(item.joiningDate)" style="color:green;" class="icon ion-cash"></i> <i ng-show="isExceededStay(item.joiningDate)" class="icon ion-ios-close"
+                                    style="color:red;"></i> Donate
+                            </a>
+                            <a class="tab-item" href="#/app/needyChat/{{item.id}}">
+                                <i class="icon ion-ios-chatboxes"></i> Chat
+                            </a>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+
+             <div class="row" ng-if="showSpinner">
+                    <div class="col">
+                        <div class="text-center">
+                            <ion-spinner icon="ripple"></ion-spinner>
+                            <p style="color:gray">Loading data...</p>
+                        </div>
+                  </div>
+            </div>
+          
+
+            <ion-infinite-scroll immediate-check="false" on-infinite="loadMore()"  distance="1%"></ion-infinite-scroll>
+
+
+        </ion-content>
+        <button class="button button-float" ng-click="openComposer()">
+	        <i class="icon ion-plus"></i>
+	    </button>
+
+    </ion-pane>
+
+</ion-view>
