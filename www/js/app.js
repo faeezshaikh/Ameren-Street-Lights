@@ -7,6 +7,8 @@
 angular.module('starter', ['ionic',  'ionic.cloud','starter.controllers', 'auth0', 'angular-storage',
      'ngCordova', 'firebase','angularMoment','angular-storage','ngMap','angularCircularNavigation'])
 
+.constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
