@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-storage',
+angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0', 'angular-storage',
      'ngCordova', 'firebase','angularMoment','angular-storage','ngMap'])
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
@@ -67,7 +67,32 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
 
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicCloudProvider) {
+
+
+  ////////// PUSH NOTIFICATION //////////
+
+ $ionicCloudProvider.init({
+    "core": {
+      "app_id": "4f93e9b7"
+    },
+    "push": {
+      "sender_id": "468876054523",
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+        },
+        "android": {
+          "iconColor": "#343434"
+        }
+      }
+    }
+  });
+
+    ////////// PUSH NOTIFICATION //////////
+  
+
   $stateProvider
 
     .state('app', {

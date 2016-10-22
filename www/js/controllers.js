@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,
-          auth, $state, $window, $firebase, $firebaseAuth,$rootScope,PersonService,FIREBASE_URL,CtrlService) {
+          auth, $state, $window, $firebase, $firebaseAuth,$rootScope,PersonService,FIREBASE_URL,CtrlService,$ionicPush) {
 
 
       $scope.options = {
@@ -149,23 +149,24 @@ angular.module('starter.controllers', [])
 
 
 
-
     //////// PUSH NOTIFICATION ////
 
-    // $ionicPush.register().then(function(t) {
-    //   return $ionicPush.saveToken(t);
-    // }).then(function(t) {
-    //   console.log('Token saved:', t.token);
-    // // alert('Token saved:' + t.token);
-    // });
+    $ionicPush.register().then(function(t) {
+      return $ionicPush.saveToken(t);
+    }).then(function(t) {
+      console.log('Token saved:', t.token);
+    // alert('Token saved:' + t.token);
+    });
 
 
 
-    // $scope.$on('cloud:push:notification', function(event, data) {
-    //   var msg = data.message;
-    //   alert('Push Notification: \n' + msg.title + ': ' + msg.text);
-    // });
+    $scope.$on('cloud:push:notification', function(event, data) {
+      var msg = data.message;
+      alert('Push Notification: \n' + msg.title + ': ' + msg.text);
+    });
   //////// PUSH NOTIFICATION ////
+
+
 
 
 })
