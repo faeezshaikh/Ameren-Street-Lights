@@ -75,6 +75,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+
+  .state('app.needyDetails', {
+        url: '/needy/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/needyDetails.html',
+            controller: 'NeedyDetailsCtrl'
+          }
+        }
+      })
   .state('app.settings', {
     	   url: '/settings',
     	   views: {
