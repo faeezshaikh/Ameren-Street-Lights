@@ -53,6 +53,21 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		all = $scope.openbeds;
 			  scrollRef.scroll.next(100);
 		console.log('Open beds:', $scope.openbeds);
+
+
+
+		// Closed beds
+
+		// 		 var baseRef2 = new Firebase(FIREBASE_URL + '/closedbeds');
+
+	  // var scrollRef2 = new Firebase.util.Scroll(baseRef2, 'agcid');
+	  // $scope.closedbeds = $firebaseArray(scrollRef2);
+		// 	  scrollRef2.scroll.next(100);
+		// console.log('closedbeds beds:', $scope.closedbeds);
+
+		// Closed beds
+
+
 		
 		// Initialise Map
 		 NgMap.getMap().then(function(map) {

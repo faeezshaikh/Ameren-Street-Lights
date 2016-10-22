@@ -53,10 +53,11 @@ map {
            		
            		 <marker position="{{[currentCoords.lat,currentCoords.lon]}}" icon="img/here.png"></marker>
            		 
+                <!--Open Shelters-->
            		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in filtered = (openbeds | filter:searchText)" 
            		 		position="{{[agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE]}}"
            		 		on-click="showDetail(event,agent)"
-										icon="img/shelters.png"
+										icon="img/medical.png"
 										animation = "DROP"
            		 		clickable="true">
            		 
@@ -91,7 +92,52 @@ map {
 					      </info-window>
            		
            		 
-           		 </marker> 		
+           		 </marker> 	
+                  <!--Open Shelters-->
+
+
+                  <!--Closed Shelters-->
+              <marker id='{{agent.agcid}}'  ng-repeat = "agent in filtered = (closedbeds | filter:searchText)" 
+           		 		position="{{[agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE]}}"
+           		 		on-click="showDetail(event,agent)"
+										icon="img/close.png"
+										animation = "DROP"
+           		 		clickable="true">
+           		 
+		           		 <info-window id="foo-iw" >
+					        <div ng-non-bindable="">
+					          <strong>{{agent1.nme}}</strong><br/>
+					          {{agent1.adr1}}<br/>
+                      <table style="width:100%">
+                        <tr>
+                          <td>Family Beds</td>
+                          <td>0 &nbsp;<i class="ion ion-ios-people-outline"></i></td>
+                        </tr>
+                       <tr>
+                         <td> Single M Beds</td>
+                          <td>0 &nbsp;<i class="ion ion-male"></i></td>
+                        </tr>
+                        <tr>
+                          <td>Single F Beds</td>
+                          <td>0 &nbsp;<i class="ion ion-female"></i></td>
+                        </tr>
+                         <tr>
+                          <td>Veterans  Beds</td>
+                          <td>0 &nbsp; <i class="ion ion-ios-medkit-outline"></i></td>
+                        </tr>
+                      </table>
+					          Available: November 17, 2016<br/>
+					          {{getDistance(agent1) | number : 2}} miles away&nbsp;&nbsp;<a ng-click="launchNav(agent1)"><i style="color:#398EF7;" class="icon ion-ios-navigate"></i></a><br/>
+					          <a href="mailto:{{agent1.email}}" style="text-decoration:blink;color:red;" ><i class="icon ion-ios-email"></i>&nbsp;Email</a>
+										&nbsp;&nbsp;&nbsp;<a  style="text-decoration:blink;color:red;"  href="tel:{{agent1.phone1}}"><i class="icon ion-ios-telephone"></i>&nbsp;Call</a>
+										&nbsp;&nbsp;&nbsp;<a style="text-decoration:blink;color:red;"  ng-click="openSite(agent1.weburl)"><i class="icon ion-mouse"></i>&nbsp;Web</a>
+					        </div>
+					      </info-window>
+           		
+           		 
+           		 </marker> 	
+                  <!--Closed Shelters-->
+
            </map>
            <!-- Map End -->
           
