@@ -362,5 +362,29 @@ angular.module('starter.controllers')
 		//////// [Add New Needy Ends] ////////
 
 
+	 
+		/////////// [ Delete Homeless Person ] //////////////
+	  $ionicModal.fromTemplateUrl('templates/deletePersonConfirmation.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.deleteIdeaModal = modal;
+		});
+	  
+	  $scope.openDeleteConfirmation = function(item) {
+		  $scope.deleteIdeaModal.show();
+		  ideaToDelete = item;
+	  }
+	  $scope.closeDeleteConfirmation = function() {
+		  $scope.deleteIdeaModal.hide();
+	  }
+	  
+	  $scope.deletePerson = function() {
+		  $scope.items.$remove(ideaToDelete);
+		  $scope.deleteIdeaModal.hide();
+	  }
+	  
+		/////////// [ Delete Homeless Person End	 ] //////////////
+
     
 	});
