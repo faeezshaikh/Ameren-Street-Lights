@@ -85,6 +85,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
+    .state('app.donate', {
+        url: '/donate',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/donate.html',
+            controller: 'DonateCtrl'
+          }
+        }
+      })
+
   .state('app.search', {
     url: '/search',
     views: {
