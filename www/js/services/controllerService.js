@@ -99,7 +99,8 @@ angular.module('starter.controllers')
 					} else return "http://www.kickboxingplanet.com/wp-content/uploads/2014/08/profile-picture-unknown1.jpg";
 			}
 		 else {
-			return "http://www.paulforattleboro.com/uploads/3/5/1/7/3517260/4716714_orig.jpg";
+			// return "http://www.paulforattleboro.com/uploads/3/5/1/7/3517260/4716714_orig.jpg";
+			return "img/hanshake.png";
 		}
 		}
 	}
