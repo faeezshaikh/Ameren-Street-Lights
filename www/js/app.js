@@ -95,6 +95,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+
+        .state('app.needyJobs', {
+        url: '/needyJobs/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/needyJobs.html',
+            controller: 'NeedyJobsCtrl'
+          }
+        }
+      })
   .state('app.settings', {
     	   url: '/settings',
     	   views: {
