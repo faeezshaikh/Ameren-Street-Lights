@@ -85,6 +85,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+
+            .state('app.needyChat', {
+        url: '/needyChat/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/needyChat.html',
+            controller: 'NeedyChatCtrl'
+          }
+        }
+      })
   .state('app.settings', {
     	   url: '/settings',
     	   views: {

@@ -1,0 +1,80 @@
+<ion-view title="Discuss about {{}}"  class="show" >
+<ion-pane class="background-color-grey">
+	<ion-nav-buttons side="secondary" >
+		<button class="button button-clear"
+		        ng-click="user.toggleFavorite(show)" >
+			<!-- <i class="ion-heart" ng-class="{'assertive':user.current.favorites[show.showid]}" ></i > -->
+		</button >
+	</ion-nav-buttons >
+
+	<ion-content delegate-handle="show-page" >
+
+		<!-- Loading Indicator -->
+		
+		<div class="row" ng-if="data.loading" >
+		    <div class="col">
+		        <div class="text-center">
+		           <ion-spinner icon="ripple" ></ion-spinner >
+					<p style="color:gray">Loading messages...</p >
+		        </div>
+		    </div>
+		</div>
+
+		<!-- Empty room message -->
+		<div class="row" ng-show="!data.loading && data.messages.length == 0">
+		    <div class="col">
+		        <div class="text-center">
+		            <!-- <p style="text-align: center; color:gray">No comments yet. Be the first!</p> -->
+		            <p style="color:gray">No comments yet. Be the first!</p>
+		        </div>
+		    </div>
+		</div>
+	
+		<!-- Discussion list Old Style - comments style-->
+	<!-- 	<ol class="list"   >
+		    <li class="item item-avatar" ng-repeat="message in data.messages">
+		      <img ng-src={{message.profilePic}}>
+		       <div class="item item-text-wrap" >
+			      <strong style="font-size:90%">{{message.username}}</strong>
+			      <p style="font-size:10px; color:#5A93C7"> <span am-time-ago="message.timestamp" ></span ></p> 
+			      <p></p><p></p><p></p>
+					  {{message.text}}
+  				</div>
+		    </li>
+		</ol> -->
+		
+		
+		<ul class="ChatLog">
+		  <li ng-class="!isThisMe(message.username,message.profilePic) ? 'ChatLog__entry' : 'ChatLog__entry ChatLog__entry_mine'" ng-repeat="message in data.messages">
+		    <img class="ChatLog__avatar" ng-src={{message.profilePic}} />
+		    <p class="ChatLog__message">
+		       {{message.text}}
+		       <br>
+		      <!-- <time class="ChatLog__timestamp"> <p style="font-size:10px; color:#5A93C7"> <span am-time-ago="message.timestamp" ></span ></p> </time> -->
+		     <span style="font-size:11px; color:white; ">{{message.username}}</span>  <span style="font-size:10px; color:white; " am-time-ago="message.timestamp" ></span > 
+		    </p>
+		  </li>
+		</ul>
+		
+		
+		
+		
+
+	</ion-content >
+
+	<!-- Send Message Footer Area -->
+	<ion-footer-bar keyboard-attach
+	                class="bar-balanced item-input-inset" >
+		<label class="item-input-wrapper" >
+			<input type="text"
+			       placeholder="Type your message"
+			       ng-enter="sendMessage()"
+			       ng-model="data.message" />
+		</label >
+		<button class="button button-clear"
+		        ng-click="sendMessage()" >
+			Send
+		</button >
+	</ion-footer-bar >
+</ion-pane>
+</ion-view >
