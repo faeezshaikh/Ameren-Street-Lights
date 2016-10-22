@@ -65,7 +65,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		if($scope.data.demographic == 'Male')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
 		if($scope.data.demographic == 'Female')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
 		if($scope.data.demographic == 'Vets')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
-		if($scope.data.demographic == 'Family')  $scope.openbeds = $filter('filter')(all, { requirement: 'Family' });
+		if($scope.data.demographic == 'Family')  $scope.openbeds = all;
     });
 	$scope.showDetail = function(e, agent) {
 		$scope.agent1 = agent;
