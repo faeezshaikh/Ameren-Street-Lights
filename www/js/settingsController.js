@@ -15,7 +15,7 @@ angular.module('starter.controllers')
 //	    $scope.msg = "Signing out of chat..";
 //	    $scope.loggedIn = false;
 //	    $scope.loginProgress = true;
-	    $state.go('app.needy'); // adding this for device.. location.href doesnt work on device
+	    $state.go('app.playlists'); // adding this for device.. location.href doesnt work on device
 	    $window.location.reload();
 
 	  }
