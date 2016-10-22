@@ -1,1 +1,131 @@
-/* Empty. Add your own CSS if you like */
+/* Decorators */
+/*
+.ameren {
+	 color: rgb(36, 147, 60) !important; 
+}*/
+.larger {
+	 font-size: 90px;
+}
+/*.nav-bar-block, .bar {
+  background-color: rgb(0, 136, 98) !important;
+}*/
+.background-color-grey {
+  background-color: #F7F7F7;
+}
+
+/*  For border color */ 
+.bar-header {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+}
+
+
+/*.button.button-positive {
+    border-color: rgb(0, 136, 98) !important;
+    background-color: rgb(0, 136, 98) !important;
+    color: #fff;
+}*/
+
+
+
+
+/* Facebook Like Chat Begin */
+/* http://codepen.io/jokeyrhyme/pen/dAwet */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+}
+
+ul.ChatLog {
+  list-style: none;
+}
+
+.ChatLog {
+  max-width: 90%;
+  margin: 0 auto;
+}
+.ChatLog .ChatLog__entry {
+  margin: .5em;
+}
+
+.ChatLog__entry {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
+.ChatLog__entry.ChatLog__entry_mine {
+  flex-direction: row-reverse;  
+}
+
+.ChatLog__avatar {
+  flex-shrink: 0;
+  flex-grow: 0;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  
+}
+
+.ChatLog__entry.ChatLog__entry_mine 
+.ChatLog__avatar {
+  
+}
+
+.ChatLog__entry .ChatLog__message {
+  position: relative;
+  margin: 0 12px;
+}
+
+.ChatLog__entry .ChatLog__message::before {
+  position: absolute;
+  right: auto;
+  bottom: .6em;
+  left: -12px;
+  height: 0;
+  content: '';
+  border: 6px solid transparent;
+  border-right-color: #ddd;
+  z-index: 2;
+}
+
+.ChatLog__entry.ChatLog__entry_mine .ChatLog__message::before {
+  right: -12px;
+  bottom: .6em;
+  left: auto;
+  border: 6px solid transparent;
+  border-left-color: mediumseagreen !important;
+}
+
+.ChatLog__message {
+  background-color: #ddd;
+  padding: .5em;
+  border-radius: 4px;
+  font-weight: normal;
+  max-width: 70%;
+}
+
+
+.ChatLog__entry.ChatLog__entry_mine .ChatLog__message {
+  border-top: 1px solid mediumseagreen !important;;
+  border-bottom: 1px solid mediumseagreen !important;;
+  background-color: mediumseagreen !important;;
+  color: #fff;
+}
+
+.ChatLog__message .ChatLog__timestamp {
+  display: none;
+}
+
+
+/* Facebook Like Chat End */
+
