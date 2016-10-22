@@ -164,26 +164,7 @@ angular.module('starter.controllers')
 		 return false;
 	 }
 
-	 
-	 //// Share Needy People (Item) ////
-	 
-	 
-	  $scope.share = function(item) {
-		  console.log('sharing called',item);
-		  
-		  var blob = new Blob([item.cameraPic], {type: 'image/jpeg'});
-		  var fileImg = new File([blob], 'image.jpeg');
-		  
-		  $cordovaSocialSharing
-		    .share(item.article, "Teamster Article",  fileImg,"") // Share via native share sheet
-		    .then(function(result) {
-		      // Success!
-		    	 console.log('sharing successfull');
-		    }, function(err) {
-		      // An error occured. Show a message to the user
-		    	 console.log('sharing failed');
-		    });
-	  }
+
 	  
 	  
 	  
