@@ -152,6 +152,15 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+        .state('app.needyHudAgents', {
+        url: '/hudagents/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/hudagents.html',
+            controller: 'HudagentsCtrl'
+          }
+        }
+      })
 
     .state('app.playlists', {
       url: '/playlists',
