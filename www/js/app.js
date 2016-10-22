@@ -114,6 +114,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
+            .state('app.hudagents', {
+        url: '/hudagents',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/hudagents.html',
+            controller: 'HudagentsCtrl'
+          }
+        }
+      })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
