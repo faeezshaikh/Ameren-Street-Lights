@@ -1,56 +1,171 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,
+          auth, $state, $window, $firebase, $firebaseAuth,$rootScope,PersonService,FIREBASE_URL,CtrlService) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  // Form data for the login modal
-  $scope.loginData = {};
+      $scope.options = {
+        content: '=',
+        isOpen: false,
+        toggleOnClick: true,
+        background: 'red',
+        items: [
+          {
+            content: 'About',
+            background: 'blue',
+            onclick: function () {console.log('About');}
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+          },{
+            content: '<span class="fa fa-facebook"></span>Facebook',
+            background: '#3b5998',
+            onclick: function () {console.log('About');}
+          },{
+            content: 'Twitter',
+            background: 'yellow',
+            onclick: function () {console.log('About');}
+          },{
+            content: 'Github',
+            onclick: function () {console.log('About');}
+          }
+        ]
+      };
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
+   CtrlService.saveCurrentCoords();
+	 $scope.date = new Date(); // for the chat page
+    var chatRef = new Firebase(FIREBASE_URL);
+    var auth = $firebaseAuth(chatRef);
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+    
+    $scope.ameren = {'username':'','password':''};
+    
+    $scope.isFormValid = function() {
+  	  if($scope.ameren.username &&  $scope.ameren.password)  {
+  		  return true;
+  	  }
+  	  return false;
+    }
+    
+    
+    $scope.login = function(socialPlatform) {
+      console.log('loging attempt');
+      
+      $scope.loginProgress = true;
+      auth.$authWithOAuthPopup(socialPlatform).then(function(authData) {
+        console.log("Logged in as:", authData.uid);
+        $scope.loggedIn = true;
+        $scope.loginProgress = false;
+        PersonService.SetLoginState(true);
+      }).catch(function(error) {
+        console.log("Authentication failed:", error);
+        $scope.loginProgress = false;
+        console.log(error);
+        $scope.msg = "";
+        $("#loginPage").effect("shake", {
+          times: 4
+        }, 1000);
+      });
+    }
+    
+    $scope.submitForm = function() {
+  	    $("#loginPage").effect("shake", {
+  	        times: 4
+  	      }, 1000);
+    }
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+    $scope.logout = function() {
+  	  PersonService.SetLoginState(false);
+      chatRef.unauth();
+      $scope.msg = "Signing out of chat..";
+      $scope.loggedIn = false;
+      $scope.loginProgress = true;
+      $state.go('app.feeds'); // adding this for device.. location.href doesnt work on device
+      $window.location.reload();
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
+    }
+    
+    auth.$onAuth(function(authData) {
+      // Once authenticated, instantiate Firechat with our user id and user name
+      if (authData) {
+        $scope.loginProgress = false;
+        $scope.loggedIn = true;
+        $rootScope.currentUser = "user";
+        $scope.explModal.hide();
+//        $window.location.href = "#/app/chat/";
+        console.log('Chat controller. State name = ',$state.current.name);
+        if($state.current.name == 'app.chat') {
+      	  $state.go('app.chat');
+//      	  $window.location.href = "#/app/chat/";
+        } else {
+      	  $state.go('app.needy');
+      	 // $window.location.href = "#/app/feeds";
+        }
+        if (authData.provider == 'facebook') {
+          $scope.userName = authData.facebook.displayName;
+          $scope.userImg = authData.facebook.profileImageURL;
+          $scope.userEmail = authData.facebook.email; // Email works only if user has exposed.
+          PersonService.SetAvatar(authData.facebook.profileImageURL);
+          PersonService.SetUserDetails($scope.userName,$scope.userImg,$scope.userEmail,authData.facebook.displayName);
+        }
+        if (authData.provider == 'twitter') {
+          $scope.userName = authData.twitter.displayName;
+          $scope.userImg = authData.twitter.profileImageURL;
+          $scope.userEmail = authData.twitter.email;
+          PersonService.SetAvatar(authData.twitter.profileImageURL);
+          PersonService.SetUserDetails($scope.userName,$scope.userImg,$scope.userEmail,authData.twitter.displayName);
+        }
+        if (authData.provider == 'google') {
+          $scope.userName = authData.google.displayName;
+          $scope.userImg = authData.google.profileImageURL;
+          $scope.userEmail = authData.google.email;
+          PersonService.SetAvatar(authData.google.profileImageURL);
+          PersonService.SetUserDetails($scope.userName,$scope.userImg,$scope.userEmail,authData.google.displayName);
+        }
+        if (authData.provider == 'github') {
+            $scope.userName = authData.github.displayName;
+            $scope.userImg = authData.github.profileImageURL;
+            $scope.userEmail = authData.github.email;
+            PersonService.SetAvatar(authData.github.profileImageURL);
+            PersonService.SetUserDetails($scope.userName,$scope.userImg,$scope.userEmail,authData.github.displayName);
+          }
+        
+    
+        
+          // Removing firechat.
+        // var chat = new FirechatUI(chatRef, angular.element(document.querySelector('#firechat-wrapper')));
+        // chat.setUser(authData.uid, authData[authData.provider].displayName);
+      }
+    });
+    
+    
+    
+    $scope.isUserAdmin = function() {
+    	if($scope.userName && $scope.userName.indexOf('Faeez')==-1) {
+    		return false;
+    	}
+    	return true;
+    }
+
+  $scope.name = PersonService.GetUserDetails().name;
+
+
+
+
+    //////// PUSH NOTIFICATION ////
+
+    // $ionicPush.register().then(function(t) {
+    //   return $ionicPush.saveToken(t);
+    // }).then(function(t) {
+    //   console.log('Token saved:', t.token);
+    // // alert('Token saved:' + t.token);
+    // });
+
+
+
+    // $scope.$on('cloud:push:notification', function(event, data) {
+    //   var msg = data.message;
+    //   alert('Push Notification: \n' + msg.title + ': ' + msg.text);
+    // });
+  //////// PUSH NOTIFICATION ////
+
+
 })
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});

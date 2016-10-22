@@ -9,7 +9,7 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
 
-.run(function($ionicPlatform,$rootScope) {
+.run(function($ionicPlatform, auth, $rootScope, store,$ionicModal,$window,$http,$cordovaPush,$cordovaGeolocation) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -50,8 +50,21 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+     data: {
+          requireLogin: true
+        }
   })
+
+  .state('app.login', {
+        url: '/login',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login.html',
+            controller: ''
+          }
+        }
+      })
 
   .state('app.search', {
     url: '/search',
@@ -90,5 +103,16 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+ $urlRouterProvider.otherwise(function($injector, $location) {
+        var state = $injector.get('$state');
+        console.log('State name = ',state.current.name);
+        if (state.current.name == '' || state.current.name == 'app.chat') {
+        	
+          state.go('app.playlists');
+        } 
+        else {
+          state.go('app.playlists');  // Default landing page
+        }
+        return $location.path();
+      });
 });
