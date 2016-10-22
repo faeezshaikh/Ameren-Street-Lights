@@ -362,6 +362,59 @@ angular.module('starter.controllers')
 		//////// [Add New Needy Ends] ////////
 
 
+	////////// [ Edit Person ] /////////////////
+	  $ionicModal.fromTemplateUrl('templates/editIdea.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.editIdeaModal = modal;
+		});
+	  
+	 
+	  $scope.openEditor = function(item) {
+				$scope.idToEdit = item.$id;
+				$scope.removePicture();
+				$scope.editPerson = {
+						name: item.name,
+						imageData: item.imageData,
+						dob: new Date(item.dob),
+						phone: item.phone,
+						email:item.email,
+						address:item.address,
+						skills: item.skills,
+						story:	item.story,
+						picture: CtrlService.getPicUrlFromCameraPic(item),
+				  	lastUpdated: new Date().toString(),
+				  	// cameraPic:$scope.imageData || null,
+						joiningDate: item.joiningDate.toString(),
+						referrer: item.referrer
+				};
+
+				if(item.skills) $scope.editPerson.willingToWork = true;
+		
+				$scope.editIdeaModal.show();
+	  }
+	  
+		  $scope.saveEdit = function() {
+					$scope.editIdeaModal.hide();
+					var obj = {
+							name: $scope.editPerson.name,
+							dob: $scope.editPerson.dob.toString(),
+							phone: $scope.editPerson.phone,
+							email:$scope.editPerson.email,
+							address:$scope.editPerson.address || 'none',
+							skills: $scope.editPerson.skills,
+							story:	$scope.editPerson.story,
+							lastUpdated: new Date().toString(),
+							cameraPic:$scope.imageData || null, ////// ???
+							referrer: $scope.editPerson.referrer    ////// ????
+					};
+					var url = FIREBASE_URL + '/needy/' + $scope.idToEdit;
+					var fredNameRef = new Firebase(url);
+					fredNameRef.update(obj);
+	  }
+		////////// [ Edit Person End ] /////////////////
+
 	 
 		/////////// [ Delete Homeless Person ] //////////////
 	  $ionicModal.fromTemplateUrl('templates/deletePersonConfirmation.html', {

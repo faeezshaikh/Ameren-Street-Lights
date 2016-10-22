@@ -1,0 +1,146 @@
+<ion-modal-view>
+
+	<ion-header-bar class="bar bar-header bar-balanced">
+		<h1 class="title">Edit Person Details</h1>
+		<button class="button button-clear button-primary" ng-click="closeComposer()">Cancel</button>
+	</ion-header-bar>
+
+
+	<ion-content class="padding">
+		<!-- 	  <canvas name='canva' id='signatureCanvas' width='400' height='180' style='border: 1px solid black;'></canvas>
+	          <div class='button-bar'>
+	              <a class='button button-energized' ng-click='clearCanvas()'>Clear</a>
+	              <a class='button button-balanced' ng-click='saveCanvas()'>Save</a>
+	          </div>
+	          <br>
+	          <img ng-src='{{signature}}'/> -->
+		<div class="list">
+
+
+
+			<!--<ion-toggle ng-model="airplaneMode" toggle-class="toggle-royal">Airplane Mode</ion-toggle>-->
+
+
+
+
+
+          <!--Image Starts -->
+			<!--<div class="text-center" ng-hide="imageData" >
+				<img class="full-image" ng-src="http://www.hepatologyassociation.com.au/wp-content/uploads/2015/01/person-placeholder-3.jpg"
+					style="width:50%;height:50%">
+			</div>-->
+
+			<div class="text-center" ng-show="imageData" >
+				<div class="picture">
+						<img ng-src="data:image/jpeg;base64,{{imageData}}" alt="">
+				</div>
+			</div>
+
+      <div class="text-center" ng-hide="imageData" >
+				<img class="full-image" ng-src="{{editPerson.picture}}"
+					style="width:50%;height:50%">
+			</div>
+			<div class="text-center">
+				<button class="button button-balanced" ng-click="addPicture(true)"><i class="icon ion-ios-cloud-upload">&nbsp;</i>Upload</button>
+        <button class="button button-balanced" ng-click="addPicture(false)"><i class="icon ion-camera">&nbsp;</i>Take Picture</button>
+				<button class="button button-assertive" ng-click="removePicture()" ng-show="imageData"><i class="icon ion-trash-a">&nbsp;</i>Remove</button>
+			</div>
+
+        <!--Image Ends-->
+
+			<p></p>
+
+				<div class="item item-divider">
+						Personal Bio
+					</div>
+					<label class="item item-input item-stacked-label">
+              <span class="input-label">Name*&nbsp;<small ng-show="" style="font-size:50%">Some validation</small></span>
+              <input ng-model="editPerson.name" type="text" placeholder="Full Name">
+            </label>
+
+
+			<label class="item item-input item-stacked-label">
+				  		<span class="input-label">DOB*&nbsp;</span>
+              			<!-- <input ng-model="editPerson.age" type="number" min="1" max="99" placeholder="Age"> -->
+              			<input type="date" placeholder="MM/DD/YYYY" ng-model="editPerson.dob">
+		</label>
+				  <!--<div class="col col-50">
+							 <span class="input-label">Gender*&nbsp;<small ng-show="" style="font-size:50%">Some validation</small></span>
+							<label class="item item-select">
+							    <select>
+							      <option  value="male">M</option>
+							      <option  value="female" selected>F</option>
+							    </select>
+							 </label>
+				</div>-->
+		
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Phone&nbsp;<small  style="font-size:50%">Min 10 chars</small></span>
+              <input ng-model="editPerson.phone" type="text" placeholder="(314)-234-9876" maxlength="12"></textarea>
+            </label>
+
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Email&nbsp;</span>
+              <input ng-model="editPerson.email" type="email" placeholder="someone@gmail.com"></textarea>
+            </label>
+
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Case Worker&nbsp;</span>
+              <input ng-model="editPerson.referrer" type="text" placeholder="Person assigned to this case"></textarea>
+            </label>
+
+        <div class="item item-divider">
+						Address
+					</div>
+		<label class="item item-input item-stacked-label">
+            <div class="row">
+            		<div class="col col-50">
+            			<span class="input-label">Use current location</span>
+            			<p></p>
+            			<small  style="font-size:50%">Turn off to enter Address</small>
+            		</div>
+            		<div class="col col-50">
+            		  <label class="toggle pull-right">
+										<input type="checkbox" ng-model="editPerson.useLocation">
+										<div class="track">
+											<div class="handle"></div>
+										</div>
+									</label>
+						  	</div>
+						</div>
+		</label>
+
+
+
+
+						<label class="item item-input item-stacked-label" ng-hide="editPerson.useLocation">
+              <span class="input-label">Address*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
+              <textarea ng-model="editPerson.address" type="text" placeholder="Last known Address" rows="5" cols="50"></textarea>
+            </label>
+
+					<ion-checkbox ng-model="editPerson.willingToWork">Is Willing to Work?</ion-checkbox>
+
+						<label class="item item-input item-stacked-label" ng-show="editPerson.willingToWork">
+              <span class="input-label">Skills*&nbsp;<small style="font-size:50%">Separate skills by comma</small></span>
+              <textarea ng-model="editPerson.skills" type="text" placeholder="Separate each skill by a comma" rows="5" cols="50"></textarea>
+            </label>
+
+
+						<label class="item item-input item-stacked-label">
+              <span class="input-label">Story*&nbsp;<small ng-show="!isDescValid(editPerson.story)" style="font-size:50%">Min 100 chars</small></span>
+              <textarea ng-model="editPerson.story" type="text" placeholder="Detailed Story" rows="20" cols="50"></textarea>
+            </label>
+		</div>
+	</ion-content>
+
+	<!-- Send Message Footer Area -->
+	<ion-footer-bar keyboard-attach class="bar-balanced item-input-inset">
+
+		<button class="button button-block button-balanced" ng-disabled="isInfoValid(editPerson)" ng-click="saveEdit()">
+			<i class="ion-ios-paperplane"></i>&nbsp;&nbsp;Submit
+		</button >
+	</ion-footer-bar >
+  </ion-modal-view>
