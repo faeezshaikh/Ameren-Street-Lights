@@ -33,6 +33,49 @@ angular.module('starter.controllers')
 		  console.log("The read of LastPerson Object failed: " + errorObject.code);
 		});
 
+  //////////// [ Likes Start ] /////////////////
+	  function loadLikesFromCache() {
+		  var likedFeeds = JSON.parse(localStorage.get("liked"));
+		  if(likedFeeds) {
+			  return likedFeeds
+		  } else {
+			  var a = []
+			  if(a instanceof Array) {
+				  return a;
+			  } 
+		  }
+	  }
+
+	  $scope.isLiked = function(feed) {
+		  var likedFeeds = loadLikesFromCache();
+			  if(likedFeeds.indexOf(feed.id) == -1) {
+				  // Not found so not liked
+				  	return false;
+			  } else {
+				  return true;
+			  }
+	  }
+		  
+	  $scope.updateLikes = function(index,obj) {
+		  var likedFeeds = loadLikesFromCache();
+		  
+		  if($scope.isLiked(obj))  {
+			  $scope.liked=false
+			  likedFeeds.splice(likedFeeds.indexOf(obj.id),1);
+			  obj.likes --;
+		  }
+		  else { // not liked yet, so go ahead and like it
+			
+			  $scope.liked= true;
+			  obj.likes++;
+			  likedFeeds.push(obj.id);
+		  }
+		  localStorage.set("liked",JSON.stringify(likedFeeds));
+		  $scope.items[index] = obj;
+		  $scope.items.$save(obj);   // synchronize it with Firebase array
+	  }
+	  
+	  //////////// [ Likes End ]/////////////////
 
 	  		  
 	  // This function is called whenever the user reaches the bottom of needy people page
