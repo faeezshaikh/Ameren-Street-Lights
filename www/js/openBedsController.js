@@ -9,7 +9,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	
 	function init() {
 		var needyId = $stateParams.needyId; // Not using it..really.
-		var lat,lon;
+		var lat,lon,requirement;
 		
 		// Call Service to get Current Co-ords
 		$scope.currentCoords  = CtrlService.getCoords();
@@ -23,6 +23,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 				var needyPerson = snapshot.val();
 				lat = needyPerson.lat;
 				lon = needyPerson.long;
+				requirement = 'Veteran'; // TODO: Fetch from Firebase
+
 				}, function (errorObject) {
 					console.log("The read failed: " + errorObject.code);
 				});
@@ -36,9 +38,11 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		// 	$scope.hudagents = response.data;
 		// });
 
-  $scope.data = {
-    demographic:'Family',
-  };
+			$scope.data = {
+				demographic:'Family',
+			};
+
+			if(requirement == 'Veteran')  $scope.data.demographic = 'Veteran';
 
 		 var baseRef = new Firebase(FIREBASE_URL + '/openbeds');
 
@@ -64,7 +68,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		console.log('Changed !',$scope.data.demographic);
 		if($scope.data.demographic == 'Male')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
 		if($scope.data.demographic == 'Female')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
-		if($scope.data.demographic == 'Vets')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
+		if($scope.data.demographic == 'Veteran')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
 		if($scope.data.demographic == 'Family')  $scope.openbeds = all;
     });
 	$scope.showDetail = function(e, agent) {

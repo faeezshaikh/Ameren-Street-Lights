@@ -54,10 +54,11 @@
                             {{item.story | limitTo:200}}... Read More
                         </p>
                         <p>
-                            <a class="subdued">{{item.likes == 0 ? '' : item.likes}} {{item.likes > 1 ? 'Likes' : item.likes == 0 ? '' : 'Like'}}</a>
+                            <a class="subdued">{{item.likes == 0 ? '' : item.likes}} {{item.likes > 1 ? 'Likes' : item.likes == 0 ? '' : 'Like'}}</a><br/><br/>
                             <a ng-show="item.skills" class="subdued" href="#/app/needyJobs/{{item.$id}}"><i class="icon ion-university"></i>&nbsp;Job Openings</a>
                             <a ng-hide="item.skills" class="subdued" href=""><i class="icon ion-university"></i>&nbsp;Add Skills</a>
                             <a class="subdued" href="#/app/hudagents/{{item.$id}}"><i class="icon ion-home"></i>&nbsp;Hud Agents</a>
+                            <a class="subdued" href="#/app/openbeds/{{item.$id}}"><i class="icon ion-medkit"></i>&nbsp;Shelter</a>
                             <!--<a href="#" class="subdued">5 HUD Agents</a>-->
                         </p>
                         <div class="item tabs tabs-secondary tabs-icon-left">

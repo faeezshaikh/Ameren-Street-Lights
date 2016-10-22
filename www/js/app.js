@@ -177,15 +177,7 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
         }
       })
 
-             .state('app.openbeds', {
-        url: '/openbeds',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/openbeds.html',
-            controller: 'OpenBedsCtrl'
-          }
-        }
-      })
+     
         .state('app.needyHudAgents', {
         url: '/hudagents/:needyId',
         views: {
@@ -195,6 +187,25 @@ angular.module('starter', ['ionic',  'starter.controllers', 'auth0', 'angular-st
           }
         }
       })
+                 .state('app.openbeds', {
+        url: '/openbeds',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/openbeds.html',
+            controller: 'OpenBedsCtrl'
+          }
+        }
+      })
+              .state('app.openbedsForNeedy', {
+        url: '/openbeds/:needyId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/openbeds.html',
+            controller: 'OpenBedsCtrl'
+          }
+        }
+      })
+   
 
     .state('app.playlists', {
       url: '/playlists',

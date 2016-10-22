@@ -36,17 +36,11 @@ map {
 		      	({{ filtered.length}})
 		    </div>
 			 <!-- Search Bar Header -->
-<!--
-    <div class="button-bar">
-  <a class="button" ng-click="filterBeds('family')">Family</a>
-  <a class="button" ng-click="filterBeds('male')">Male</a>
-  <a class="button" ng-click="filterBeds('female')">Female</a>
-  <a class="button" ng-click="filterBeds('vets')">Vets</a>
-</div>-->
+
 
     <div class="button-bar padding">
       <a grouped-radio="'Family'" ng-model="data.demographic">Family</a>
-       <a grouped-radio="'Vets'" ng-model="data.demographic">Vets</a>     
+       <a grouped-radio="'Veteran'" ng-model="data.demographic">Vets</a>     
       <a grouped-radio="'Male'" ng-model="data.demographic">Male</a>
        <a grouped-radio="'Female'" ng-model="data.demographic">Female</a>
     </div>
