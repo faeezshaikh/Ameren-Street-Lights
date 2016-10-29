@@ -17,6 +17,18 @@ map {
 .button-bar > .button:first-child {
     border-radius: 20px 0px 0px 20px !important;
 }
+.button-balanced {
+      min-width: 60px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
 
 </style>
  <ion-pane class="background-color-grey">
@@ -96,10 +108,46 @@ map {
                       id="foo-iw" >
                     <div ng-non-bindable="" >
                       <div class="contents" >
-                        <img style="width:100%;" ng-src="{{getPic(agent1)}}"
-                            alt="" />
-                        <h4 class="text-center">Cafe Name&nbsp;<sup><small style="color:red;">Reported</small></sup></h4 > 
-                        <p ><i class="ion ion-ios-location" ></i >&nbsp;3310 Brunswick drive, Florissant, MO 64044.</p >
+                        <div class="text-center">
+                          <img style="max-width:50%;max-height:50%" class="text-center" ng-src="{{getPic(agent1)}}"/>
+                        </div>
+                        <!--<h4 class="text-center">Cafe Name&nbsp;<sup><small style="color:red;">Reported</small></sup></h4 > -->
+
+                        <table style="width:100%">
+                          <tr>
+                            <th>Location:</th>
+                            <td>3310 Brunswick drive, Florissant, MO 64044</td>
+                            <td>
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Navigate</div >
+                            </td>
+                          </tr>
+                          <tr>
+                            <th rowspan="2">Reporter:</th>
+                            <td>Name: Gary Jobe</td>
+                             <td rowspan="2">
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Call</div >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Cell: 314-987-9834</td>
+                             
+                          </tr>
+                          <tr>
+                            <th>Status:</th>
+                            <td>Open</td>
+                            <td>
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Update</div >
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Nearby Trucks:</th>
+                            <td>5</td>
+                            <td>
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Dispatch</div >
+                            </td>
+                          </tr>
+                        </table>
+                        <!--<p ><i class="ion ion-ios-location" ></i >&nbsp;3310 Brunswick drive, Florissant, MO 64044.</p >
                         <p> <i class="ion ion-ios-information-outline" ></i >&nbsp;Light has been out for several days.</p >
                         
                         <div class="row" >
@@ -118,10 +166,8 @@ map {
                               87
                             </p >
                           </div >
-                        </div >
-                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Get Directions</div >
-                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Call Reporter</div >
-                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">View details</div >
+                        </div >-->
+                        <!--<div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">View details</div >-->
                       </div >
                     </div >
                   </info-window >

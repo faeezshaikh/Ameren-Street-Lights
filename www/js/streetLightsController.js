@@ -168,8 +168,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 			
 			// $scope.openbeds.push();
 			$timeout(function(){
-				$scope.openbeds.$add(obj); 
-			},700);
+				$scope.streetlights.$add(obj); 
+			},400);
 				
 		 }
 	//// Report New Street Light ///

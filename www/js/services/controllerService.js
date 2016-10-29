@@ -92,8 +92,6 @@ angular.module('starter.controllers')
 
 		getPicUrlFromCameraPic : function(person) {
 			if(person) {
-				console.log('Object Report',person);
-				
 					if(person.cameraPic) {
 						return "data:image/jpeg;base64," + person.cameraPic;
 					} else if(person.picture) {
