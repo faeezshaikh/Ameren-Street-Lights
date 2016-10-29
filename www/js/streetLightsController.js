@@ -49,10 +49,9 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		 var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
 
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
-	  $scope.openbeds = $firebaseArray(scrollRef);
-		all = $scope.openbeds;
-			  scrollRef.scroll.next(100);
-		console.log('StreetLightsCtrl:', $scope.openbeds);
+	  $scope.streetlights = $firebaseArray(scrollRef);
+		scrollRef.scroll.next(100);
+		console.log('StreetLightsCtrl:', $scope.streetlights);
 
 
 
