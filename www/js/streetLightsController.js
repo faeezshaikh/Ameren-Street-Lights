@@ -46,13 +46,13 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 			if(requirement == 'Male')  $scope.data.demographic = 'Male';
 
-		 var baseRef = new Firebase(FIREBASE_URL + '/openbeds');
+		 var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
 
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
 	  $scope.openbeds = $firebaseArray(scrollRef);
 		all = $scope.openbeds;
 			  scrollRef.scroll.next(100);
-		console.log('Open beds:', $scope.openbeds);
+		console.log('StreetLightsCtrl:', $scope.openbeds);
 
 
 
@@ -114,10 +114,10 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	 
 	
 
-	//// Add new Shelter ///
+	//// Report New Street Light ///
 
 
-	 $ionicModal.fromTemplateUrl('templates/addNewShelter.html', {
+	 $ionicModal.fromTemplateUrl('templates/reportStreetLight.html', {
 		    scope: $scope,
 		    animation: 'slide-in-up'
 		  }).then(function(modal) {
@@ -138,14 +138,12 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 	$scope.autoFill = function () {
 				$scope.newShelter = {
-					name: 'St. Patrick Center',
-					dob: new Date('Nov 17, 2016'),
+					name: 'Johnny Cash',
+					dob: new Date('Dec 1, 2016'),
 					phone: '314-876-3452',
-					email: 'julied@stpatrick.com',
+					email: 'johnny@gmail.com',
 					address: '30 Plaza Sq. St Louis MO 63010',
-					// id: lastPersonId + 1,
-					family: true,
-					beds: 5
+					desc:'Light keeps flickering. Has been doing that for several days now.'
 				};
 			}
 
@@ -156,23 +154,17 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 			var obj = 
 			{
 "agcid": "82040",
-"adr1": "1901 S 11th St",
-"adr2": "null",
-"city": "Saint Louis",
-"email": "deborah.smartsolutions@gmail.com",
-"fax": "314-436-0011",
 "nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
-"phone1": "314-436-1400",
-"statecd": "MO",
-"weburl": "http://yehstl.org",
 "zipcd": "63104-3915",
 "agc_ADDR_LONGITUDE": "-90.20798",
 "agc_ADDR_LATITUDE": "38.602318",
-"languages": "ENG",
-"services": "DFC,FBC,HMC,PPC,RHC,RMC",
-"date":"",
-"time":"",
-"requirement":"Veteran"
+"reporter": $scope.newShelter.name,
+"dateReported": $scope.newShelter.dob.toString(),
+"reporterPhone":$scope.newShelter.phone,
+"reporterEmail":$scope.newShelter.email,
+"address":$scope.newShelter.address,
+"desc":$scope.newShelter.desc,
+
 }
 			
 			// $scope.openbeds.push();
@@ -181,7 +173,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 			},700);
 				
 		 }
-	//// Add New Shelter ///
+	//// Report New Street Light ///
 		
 		
 	
