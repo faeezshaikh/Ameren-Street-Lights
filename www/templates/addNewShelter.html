@@ -1,7 +1,7 @@
 <ion-modal-view>
 
 	<ion-header-bar class="bar bar-header bar-balanced">
-		<h1 class="title">Add a Needy Shelter Opening</h1>
+		<h1 class="title">Report a Street Light</h1>
 		<button class="button button-clear button-primary" ng-click="closeComposer()">Cancel</button>
 	</ion-header-bar>
 
@@ -10,11 +10,52 @@
 
 		<div class="list">
 
+
+  <!--Image Starts -->
+			<div class="text-center" ng-hide="imageData" ng-click="autoFill()">
+				<img class="full-image" ng-src="https://cdn0.iconfinder.com/data/icons/smart-city/100/Street_Light-512.png"
+					style="width:50%;height:50%">
+			</div>
+
+			<div class="text-center" ng-show="imageData" ng-click="autoFill()">
+				<div class="picture">
+					<img ng-src="data:image/jpeg;base64,{{imageData}}" alt="">
+				</div>
+			</div>
+			<div class="text-center">
+					<button class="button button-balanced" ng-click="addPicture(true)"><i class="icon ion-ios-cloud-upload">&nbsp;</i>Upload</button>
+      	  <button class="button button-balanced" ng-click="addPicture(false)"><i class="icon ion-camera">&nbsp;</i>Take Picture</button>
+					<button class="button button-assertive" ng-click="removePicture()" ng-show="imageData"><i class="icon ion-trash-a">&nbsp;</i>Remove Picture</button>
+			</div>
+			 <!--Image Ends-->
+			 
 			<p></p>
 
 				<div class="item item-divider" ng-click="autoFill()">
-						Shelter Details
+						Street Light Details
 					</div>
+							<label class="item item-input item-stacked-label">
+            <div class="row">
+            		<div class="col">
+            			<span class="input-label">Use current GPS co-oridnates</span>
+            			<p></p>
+            			<small  style="font-size:50%">Turn off to enter Address</small>
+            		</div>
+            		<div class="col">
+            		  <label class="toggle pull-right">
+										<input type="checkbox" ng-model="newPerson.useLocation">
+										<div class="track">
+											<div class="handle"></div>
+										</div>
+									</label>
+						  	</div>
+						</div>
+		</label>
+
+						<label class="item item-input item-stacked-label" ng-hide="newPerson.useLocation">
+              <span class="input-label">Address*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
+              <textarea ng-model="newPerson.address" type="text" placeholder="Last known Address" rows="5" cols="50"></textarea>
+            </label>
 					<label class="item item-input item-stacked-label">
               <span class="input-label">Name*&nbsp;<small ng-show="" style="font-size:50%">Some validation</small></span>
               <input ng-model="newShelter.name" type="text" placeholder="Full Name">
@@ -22,14 +63,11 @@
 
 
 			<label class="item item-input item-stacked-label">
-				  		<span class="input-label">Availability Date*&nbsp;</span>
+				  		<span class="input-label">Date and Time*&nbsp;</span>
               			<!-- <input ng-model="newShelter.age" type="number" min="1" max="99" placeholder="Age"> -->
               			<input type="date" placeholder="MM/DD/YYYY" ng-model="newShelter.dob">
 		</label>
-				 	<label class="item item-input item-stacked-label" ng-hide="newShelter.useLocation">
-              <span class="input-label">Address*&nbsp;<small style="font-size:50%">Min 100 chars</small></span>
-              <textarea ng-model="newShelter.address" type="text" placeholder="Last known Address" rows="5" cols="50"></textarea>
-            </label>
+			
 
 		
 
@@ -45,20 +83,16 @@
             </label>
 
 
-						<label class="item item-input item-stacked-label">
-              <span class="input-label">Number of Beds&nbsp;</span>
-              <input ng-model="newShelter.beds" type="text" placeholder="5,10 or 15"></textarea>
-            </label>
-
 				<div class="item item-divider">
-						Requirement
+						Details
 					</div>
 	
 
+						<label class="item item-input item-stacked-label">
+              <!--<span class="input-label">Details of the issue*&nbsp;<small ng-show="!isDescValid(newPerson.story)" style="font-size:50%">Min 100 chars</small></span>-->
+              <textarea ng-model="newPerson.story" type="text" placeholder="" rows="6" cols="30"></textarea>
+            </label>
 
-				<ion-checkbox ng-model="newShelter.family">Family</ion-checkbox>
-					<ion-checkbox ng-model="newShelter.male">Male</ion-checkbox>	
-					<ion-checkbox ng-model="newShelter.female">Female</ion-checkbox>
 
 				
 

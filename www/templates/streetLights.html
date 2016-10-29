@@ -1,5 +1,5 @@
 
-<ion-view view-title="Open Shelters near me">
+<ion-view view-title="Street Lights Out">
 <style>
 map {
   position:absolute;
@@ -61,7 +61,7 @@ map {
 										animation = "DROP"
            		 		clickable="true">
            		 
-		           		 <info-window id="foo-iw" >
+		           		 <!--<info-window id="foo-iw" >
 					        <div ng-non-bindable="">
 					          <strong>{{agent1.nme}}</strong><br/>
 					          {{agent1.adr1}}<br/>
@@ -89,7 +89,42 @@ map {
 										&nbsp;&nbsp;&nbsp;<a  style="text-decoration:blink;color:red;"  href="tel:{{agent1.phone1}}"><i class="icon ion-ios-telephone"></i>&nbsp;Call</a>
 										&nbsp;&nbsp;&nbsp;<a style="text-decoration:blink;color:red;"  ng-click="openSite(agent1.weburl)"><i class="icon ion-mouse"></i>&nbsp;Web</a>
 					        </div>
-					      </info-window>
+					      </info-window>-->
+
+
+                <info-window
+                      id="foo-iw" >
+                    <div ng-non-bindable="" >
+                      <div class="contents" >
+                        <img style="width:100%;" ng-src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_iFfQCSUdpxGUXyivQashPRIvQ7O3nsvHzJdSqa7BRT6G1hPp"
+                            alt="" />
+                        <h4 class="text-center">Cafe Name&nbsp;<sup><small style="color:red;">Reported</small></sup></h4 > 
+                        <p ><i class="ion ion-ios-location" ></i >&nbsp;3310 Brunswick drive, Florissant, MO 64044.</p >
+                        <p> <i class="ion ion-ios-information-outline" ></i >&nbsp;Light has been out for several days.</p >
+                        
+                        <div class="row" >
+                        
+                          <div class="col" >
+                            <p class="" >
+                            <i class="fa fa-truck" aria-hidden="true"></i> &nbsp; 5 trucks nearby
+                            </p >
+                          </div>
+                          <div class="col" >
+                            <p class="" >
+                              <i class="ion ion-star" ></i >
+                              4
+                              &nbsp;
+                              <i class="ion ion-person" ></i >
+                              87
+                            </p >
+                          </div >
+                        </div >
+                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Get Directions</div >
+                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Call Reporter</div >
+                        <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">View details</div >
+                      </div >
+                    </div >
+                  </info-window >
            		
            		 
            		 </marker> 	

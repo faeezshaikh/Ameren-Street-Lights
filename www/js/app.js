@@ -222,24 +222,24 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
           }
         }
       })
-                 .state('app.openbeds', {
-        url: '/openbeds',
+                 .state('app.streetLights', {
+        url: '/streetLights',
         views: {
           'menuContent': {
-            templateUrl: 'templates/openbeds.html',
-            controller: 'OpenBedsCtrl'
+            templateUrl: 'templates/streetLights.html',
+            controller: 'StreetLightsCtrl'
           }
         }
       })
-              .state('app.openbedsForNeedy', {
-        url: '/openbeds/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/openbeds.html',
-            controller: 'OpenBedsCtrl'
-          }
-        }
-      })
+      //         .state('app.openbedsForNeedy', {
+      //   url: '/openbeds/:needyId',
+      //   views: {
+      //     'menuContent': {
+      //       templateUrl: 'templates/openbeds.html',
+      //       controller: 'OpenBedsCtrl'
+      //     }
+      //   }
+      // })
    
 
     .state('app.playlists', {
@@ -267,10 +267,10 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         console.log('State name = ',state.current.name);
         if (state.current.name == '' || state.current.name == 'app.chat') {
         	
-          state.go('app.needy');
+          state.go('app.streetLights');
         } 
         else {
-          state.go('app.needy');  // Default landing page
+          state.go('app.streetLights');  // Default landing page
         }
         return $location.path();
       });

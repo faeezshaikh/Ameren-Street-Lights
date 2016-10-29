@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('OpenBedsCtrl', function($scope, auth, store, $state, $timeout, 
+.controller('StreetLightsCtrl', function($scope, auth, store, $state, $timeout, 
 HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocialSharing,localStorage,$ionicModal
 ,$ionicScrollDelegate,FIREBASE_URL,$cordovaCamera,$cordovaGeolocation,$cordovaLaunchNavigator,$window,$rootScope,NgMap,$filter) {
 

@@ -96,7 +96,7 @@ angular.module('starter.controllers', [])
       	  $state.go('app.chat');
 //      	  $window.location.href = "#/app/chat/";
         } else {
-      	  $state.go('app.needy');
+      	  $state.go('app.streetLights');
       	 // $window.location.href = "#/app/feeds";
         }
         if (authData.provider == 'facebook') {
