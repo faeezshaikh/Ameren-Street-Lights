@@ -96,7 +96,8 @@ angular.module('starter.controllers')
 						return "data:image/jpeg;base64," + person.cameraPic;
 					} else if(person.picture) {
 						return person.picture;
-					} else return "http://www.kickboxingplanet.com/wp-content/uploads/2014/08/profile-picture-unknown1.jpg";
+					} else return "https://upload.wikimedia.org/wikipedia/commons/3/34/Pole_Tag_Crisfield_MD_USA.jpg";
+					// https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_iFfQCSUdpxGUXyivQashPRIvQ7O3nsvHzJdSqa7BRT6G1hPp
 			}
 		 else {
 			// return "http://www.paulforattleboro.com/uploads/3/5/1/7/3517260/4716714_orig.jpg";

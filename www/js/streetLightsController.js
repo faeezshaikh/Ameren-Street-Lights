@@ -176,5 +176,9 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	//// Report New Street Light ///
 		
 		
+
+	$scope.getPic = function(report) {
+		return CtrlService.getPicUrlFromCameraPic(report);
+	}
 	
 });
