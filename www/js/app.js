@@ -145,15 +145,6 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         }
       })
 
-        .state('app.needyJobs', {
-        url: '/needyJobs/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/needyJobs.html',
-            controller: 'NeedyJobsCtrl'
-          }
-        }
-      })
   .state('app.settings', {
     	   url: '/settings',
     	   views: {
@@ -173,55 +164,8 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         }
       })
 
-    .state('app.donate', {
-        url: '/donate',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/donate.html',
-            controller: 'DonateCtrl'
-          }
-        }
-      })
-        .state('app.donatePerson', {
-        url: '/donate/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/donate.html',
-            controller: 'DonateCtrl'
-          }
-        }
-      })
-
-            .state('app.hudagents', {
-        url: '/hudagents',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/hudagents.html',
-            controller: 'HudagentsCtrl'
-          }
-        }
-      })
-
-   .state('app.news', {
-        url: '/news',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/news.html',
-            controller: 'NewsCtrl'
-          }
-        }
-      })
   
-     
-        .state('app.needyHudAgents', {
-        url: '/hudagents/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/hudagents.html',
-            controller: 'HudagentsCtrl'
-          }
-        }
-      })
+
                  .state('app.streetLights', {
         url: '/streetLights',
         views: {
@@ -231,36 +175,10 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
           }
         }
       })
-      //         .state('app.openbedsForNeedy', {
-      //   url: '/openbeds/:needyId',
-      //   views: {
-      //     'menuContent': {
-      //       templateUrl: 'templates/openbeds.html',
-      //       controller: 'OpenBedsCtrl'
-      //     }
-      //   }
-      // })
+  
    
 
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+  ;
   // if none of the above states are matched, use this as the fallback
  $urlRouterProvider.otherwise(function($injector, $location) {
         var state = $injector.get('$state');
