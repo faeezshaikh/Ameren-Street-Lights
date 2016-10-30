@@ -196,6 +196,24 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
             }
         }
     })
+
+     .state('app.chat', {
+        url: '/chat',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/chat.html',
+                controller: 'ChatCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-plus"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-profile').classList.toggle('on');
+                    }, 800);
+                }
+            }
+        }
+    })
   
    
 
