@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0', 'angular-storage',
-     'ngCordova', 'firebase','angularMoment','angular-storage','ngMap'])
+     'ngCordova', 'firebase','angularMoment','angular-storage','ngMap','ionic-material'])
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
 .directive('groupedRadio', function() {
@@ -67,7 +67,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
 
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicCloudProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicCloudProvider,$ionicConfigProvider) {
 
 
   ////////// PUSH NOTIFICATION //////////
@@ -92,6 +92,8 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
 
     ////////// PUSH NOTIFICATION //////////
   
+      // Turn off caching for demo simplicity's sake
+    $ionicConfigProvider.views.maxCache(0);
 
   $stateProvider
 
@@ -166,7 +168,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
 
   
 
-                 .state('app.streetLights', {
+    .state('app.streetLights', {
         url: '/streetLights',
         views: {
           'menuContent': {
@@ -175,6 +177,25 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
           }
         }
       })
+
+  
+      .state('app.trucks', {
+        url: '/trucks',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/trucks.html',
+                controller: 'TrucksCtrl'
+            },
+            'fabContent': {
+                template: '<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-plus"></i></button>',
+                controller: function ($timeout) {
+                    $timeout(function () {
+                        document.getElementById('fab-profile').classList.toggle('on');
+                    }, 800);
+                }
+            }
+        }
+    })
   
    
 

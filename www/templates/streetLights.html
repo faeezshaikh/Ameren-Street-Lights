@@ -29,6 +29,9 @@ th, td {
     padding: 5px;
     text-align: left;
 }
+th{
+  font-weight: bold;
+}
 
 </style>
  <ion-pane class="background-color-grey">
@@ -51,10 +54,10 @@ th, td {
 
 
     <div class="button-bar padding">
-      <a grouped-radio="'Family'" ng-model="data.demographic">Family</a>
+      <a grouped-radio="'Family'" ng-model="data.demographic">Street Lights</a>
        <!--<a grouped-radio="'Veteran'" ng-model="data.demographic">Vsets</a>     -->
-      <a grouped-radio="'Male'" ng-model="data.demographic">Male</a>
-       <a grouped-radio="'Female'" ng-model="data.demographic">Female</a>
+      <a grouped-radio="'Male'" ng-model="data.demographic">Vegetation</a>
+       <!--<a grouped-radio="'Female'" ng-model="data.demographic">Female</a>-->
     </div>
 		    
 		    <!-- Map Start -->
@@ -72,37 +75,6 @@ th, td {
 										icon="img/medical.png"
 										animation = "DROP"
            		 		clickable="true">
-           		 
-		           		 <!--<info-window id="foo-iw" >
-					        <div ng-non-bindable="">
-					          <strong>{{agent1.nme}}</strong><br/>
-					          {{agent1.adr1}}<br/>
-                      <table style="width:100%">
-                        <tr>
-                          <td>Family Beds</td>
-                          <td>5 &nbsp;<i class="ion ion-ios-people-outline"></i></td>
-                        </tr>
-                       <tr>
-                         <td> Single M Beds</td>
-                          <td>2 &nbsp;<i class="ion ion-male"></i></td>
-                        </tr>
-                        <tr>
-                          <td>Single F Beds</td>
-                          <td>6 &nbsp;<i class="ion ion-female"></i></td>
-                        </tr>
-                         <tr>
-                          <td>Veterans  Beds</td>
-                          <td>0 &nbsp; <i class="ion ion-ios-medkit-outline"></i></td>
-                        </tr>
-                      </table>
-					          Available: November 17, 2016<br/>
-					          {{getDistance(agent1) | number : 2}} miles away&nbsp;&nbsp;<a ng-click="launchNav(agent1)"><i style="color:#398EF7;" class="icon ion-ios-navigate"></i></a><br/>
-					          <a href="mailto:{{agent1.email}}" style="text-decoration:blink;color:red;" ><i class="icon ion-ios-email"></i>&nbsp;Email</a>
-										&nbsp;&nbsp;&nbsp;<a  style="text-decoration:blink;color:red;"  href="tel:{{agent1.phone1}}"><i class="icon ion-ios-telephone"></i>&nbsp;Call</a>
-										&nbsp;&nbsp;&nbsp;<a style="text-decoration:blink;color:red;"  ng-click="openSite(agent1.weburl)"><i class="icon ion-mouse"></i>&nbsp;Web</a>
-					        </div>
-					      </info-window>-->
-
 
                 <info-window
                       id="foo-iw" >
@@ -134,40 +106,19 @@ th, td {
                           </tr>
                           <tr>
                             <th>Status:</th>
-                            <td>Open</td>
+                            <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
                             <td>
                                <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Update</div >
                             </td>
                           </tr>
                           <tr>
                             <th>Nearby Trucks:</th>
-                            <td>5</td>
+                            <td>5  <i style="color:green;" class="fa fa-truck fa-2x"></i></td>
                             <td>
                                <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Dispatch</div >
                             </td>
                           </tr>
                         </table>
-                        <!--<p ><i class="ion ion-ios-location" ></i >&nbsp;3310 Brunswick drive, Florissant, MO 64044.</p >
-                        <p> <i class="ion ion-ios-information-outline" ></i >&nbsp;Light has been out for several days.</p >
-                        
-                        <div class="row" >
-                        
-                          <div class="col" >
-                            <p class="" >
-                            <i class="fa fa-truck" aria-hidden="true"></i> &nbsp; 5 trucks nearby
-                            </p >
-                          </div>
-                          <div class="col" >
-                            <p class="" >
-                              <i class="ion ion-star" ></i >
-                              4
-                              &nbsp;
-                              <i class="ion ion-person" ></i >
-                              87
-                            </p >
-                          </div >
-                        </div >-->
-                        <!--<div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">View details</div >-->
                       </div >
                     </div >
                   </info-window >
