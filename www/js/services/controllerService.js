@@ -95,7 +95,7 @@ angular.module('starter.controllers')
 					if(person.cameraPic) {
 						return "data:image/jpeg;base64," + person.cameraPic;
 					} else if(person.picture) {
-						console.log('picture present',person.picture);
+						// console.log('picture present',person.picture);
 						return person.picture;
 					} else return "https://upload.wikimedia.org/wikipedia/commons/3/34/Pole_Tag_Crisfield_MD_USA.jpg";
 					// https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_iFfQCSUdpxGUXyivQashPRIvQ7O3nsvHzJdSqa7BRT6G1hPp

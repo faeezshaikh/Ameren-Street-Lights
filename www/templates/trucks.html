@@ -1,9 +1,16 @@
-<ion-view view-title="Profile">
+
+<ion-view view-title="Repair Trucks">
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
+    <link href="css/md-custom.css" rel="stylesheet">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="hero slide-up" style="background-image: url('img/profile-bg.jpg');">
+        <div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">
+        
             <div class="content">
                 <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
-                <div class="avatar" style="background-image: url('{{imgUrl}}');"></div>
+                <!--<div class="avatar" style="background-image: url('{{imgUrl}}');"></div>-->
+                <div class="avatar" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
+                <!--https://www.iconexperience.com/_img/g_collection_png/standard/512x512/delivery_truck.png-->
                 <h3><a class="light">{{name}}</a></h3>
                 <h4>{{name}}</h4>
             </div>
@@ -19,79 +26,76 @@
                 <i class="icon ion-images"></i> Photos
             </a>
         </div>
-        <h4 class="content padding double-padding-x">Following</h4>
+        <h4 class="content padding double-padding-x">Nearby Trucks</h4>
         <div class="list animate-fade-slide-in-right">
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/jon-snow.jpg">
+            <!--<a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="https://cdn.thewaterproject.org/community/wp-content/uploads/2016/02/noun_161689.png">
                 <h2>{{name}}</h2>
                 <p>Da illest illegitimate</p>
                 <i class="icon ion-chatbubble muted"></i>
+            </a>-->
+             <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/sansa.jpg">
-                <h2>Sansa Stark</h2>
-                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
-                <i class="icon ion-chatbubble muted"></i>
+              <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/tyrion.jpg">
-                <h2>Tyrion Lannister</h2>
-                <p>B.A.M.F. imp</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-             <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/jon-snow.jpg">
-                <h2>{{name}}</h2>
-                <p>Da illest illegitimate</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/sansa.jpg">
-                <h2>Sansa Stark</h2>
-                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/tyrion.jpg">
-                <h2>Tyrion Lannister</h2>
-                <p>B.A.M.F. imp</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-             <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/jon-snow.jpg">
-                <h2>{{name}}</h2>
-                <p>Da illest illegitimate</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/sansa.jpg">
-                <h2>Sansa Stark</h2>
-                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/tyrion.jpg">
-                <h2>Tyrion Lannister</h2>
-                <p>B.A.M.F. imp</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-             <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/jon-snow.jpg">
-                <h2>{{name}}</h2>
-                <p>Da illest illegitimate</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/sansa.jpg">
-                <h2>Sansa Stark</h2>
-                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/tyrion.jpg">
-                <h2>Tyrion Lannister</h2>
-                <p>B.A.M.F. imp</p>
-                <i class="icon ion-chatbubble muted"></i>
+                <a class="item item-thumbnail-left item-icon-right" href="#">
+                <img src="http://jmonsite.com/img/icon-reefer_truck.png">
+                <h2>Pretty Hate Machine</h2>
+                <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
+                <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
+                <i class="icon ion-paper-airplane muted"></i>
             </a>
         </div>
     </ion-content>

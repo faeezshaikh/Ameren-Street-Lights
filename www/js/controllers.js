@@ -34,6 +34,19 @@ angular.module('starter.controllers', [])
     // Layout Methods
     ////////////////////////////////////////
 
+  // Form data for the login modal
+    $scope.loginData = {};
+    $scope.isExpanded = false;
+    $scope.hasHeaderFabLeft = false;
+    $scope.hasHeaderFabRight = false;
+
+    var navIcons = document.getElementsByClassName('ion-navicon');
+    for (var i = 0; i < navIcons.length; i++) {
+        navIcons.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    }
+
     $scope.hideNavBar = function() {
         document.getElementsByTagName('ion-nav-bar')[0].style.display = 'none';
     };
@@ -82,10 +95,7 @@ angular.module('starter.controllers', [])
 
     };
 
-    $scope.hideHeader = function() {
-        $scope.hideNavBar();
-        $scope.noHeader();
-    };
+   
 
     $scope.showHeader = function() {
         $scope.showNavBar();
@@ -269,7 +279,7 @@ angular.module('starter.controllers', [])
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
         });
-    }, 300);
+    }, 700);
 
     // Set Ink
     ionicMaterialInk.displayEffect();

@@ -19,6 +19,7 @@ map {
 }
 .button-balanced {
       min-width: 60px;
+      font-weight:bold;
 }
 
 table, th, td {
@@ -115,7 +116,7 @@ th{
                             <th>Nearby Trucks:</th>
                             <td>5  <i style="color:green;" class="fa fa-truck fa-2x"></i></td>
                             <td>
-                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Dispatch</div >
+                               <a class="button button-small button-balanced" href="#/app/trucks">Dispatch</a >
                             </td>
                           </tr>
                         </table>
@@ -140,6 +141,8 @@ th{
          <button class="button button-float" ng-click="openComposer()" ng-show="showPlusButton">
 	        <i class="icon ion-plus"></i>
 	    </button>
+
+      <!--<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900" ng-click="openComposer()"><i class="icon ion-plus"></i></button>-->
 
     </ion-pane>
  </ion-view>
