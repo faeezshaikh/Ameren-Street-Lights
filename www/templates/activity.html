@@ -1,0 +1,35 @@
+
+<ion-view view-title="Activity">
+    <!--<link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>-->
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
+    <link href="css/md-custom.css" rel="stylesheet">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');" href="#/app/streetLights">
+				<div class="content">
+					<!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
+					<!--<div class="avatar" style="background-image: url('{{imgUrl}}');"></div>-->
+					<div class="avatar" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
+					<!--https://www.iconexperience.com/_img/g_collection_png/standard/512x512/delivery_truck.png-->
+					<h3><a class="light">{{name}}</a></h3>
+					<h4>{{name}}</h4>
+				</div>
+        </div>
+        <div class="tabs tabs-dark tabs-icon-top static">
+            <a ui-sref="app.trucks" class="tab-item">
+                <!--<i class="icon ion-arrow-graph-up-right"></i>-->
+                <i class="icon fa fa-truck" aria-hidden="true"></i> Trucks
+            </a>
+            <a ui-sref="app.chat" class="tab-item">
+                <i class="icon ion-chatbubbles" ></i> Discussion
+            </a>
+            <a ui-sref="app.activity" class="tab-item">
+                <i class="icon ion-arrow-graph-up-right" style="color:#A3FD93;"></i> Activity
+            </a>
+        </div>
+        <h4 class="content padding double-padding-x">Status History</h4>
+      
+
+
+    </ion-content>
+   
+</ion-view>
