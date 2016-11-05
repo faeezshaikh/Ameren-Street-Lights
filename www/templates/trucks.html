@@ -3,7 +3,7 @@
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
     <link href="css/md-custom.css" rel="stylesheet">
-    <ion-content ng-class="{expanded:$scope.isExpanded}">
+    <ion-content ng-class="{expanded:$scope.isExpanded}" delegate-handle="show-page">
         <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
         <div class="hero slide-up" style="background-image: url('{{backgroundImg}}');">
         
@@ -17,19 +17,19 @@
             </div>
         </div>
         <div class="tabs tabs-dark tabs-icon-top static">
-            <a ui-sref="app.activity" class="tab-item">
+            <a ng-click="trucksSelected()" class="tab-item">
                 <!--<i class="icon ion-arrow-graph-up-right"></i>-->
                 <i class="icon fa fa-truck" aria-hidden="true" style="color:#A3FD93;"></i> Trucks
             </a>
-            <a ui-sref="app.chat" class="tab-item">
+            <a ng-click="chatSelected()" class="tab-item">
                 <i class="icon ion-chatbubbles"></i> Discussion
             </a>
             <a ui-sref="app.activity" class="tab-item">
                 <i class="icon ion-arrow-graph-up-right"></i> Activity
             </a>
         </div>
-        <h4 class="content padding double-padding-x">Nearby Trucks</h4>
-        <div class="list animate-fade-slide-in-right">
+        <div class="list animate-fade-slide-in-right" ng-show="showTrucks">
+            <h4 class="content padding double-padding-x">Nearby Trucks</h4>
             <!--<a ui-sref="app.friends" class="item item-avatar item-icon-right">
                 <img src="https://cdn.thewaterproject.org/community/wp-content/uploads/2016/02/noun_161689.png">
                 <h2>{{name}}</h2>
@@ -100,5 +100,60 @@
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
         </div>
+
+        <div ng-show="showChat">
+            <h4 class="content padding double-padding-x">Discuss about this Issue</h4>
+                	
+                <!-- Loading Indicator -->
+                    
+                    <div class="row" ng-if="data.loading" >
+                        <div class="col">
+                            <div class="text-center">
+                            <ion-spinner icon="ripple" ></ion-spinner >
+                                <p style="color:gray">Loading messages...</p >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty room message -->
+                    <div class="row" ng-show="!data.loading && data.messages.length == 0">
+                        <div class="col">
+                            <div class="text-center">
+                                <!-- <p style="text-align: center; color:gray">No comments yet. Be the first!</p> -->
+                                <p style="color:gray">No comments yet. Be the first!</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <ul class="ChatLog">
+                    <li ng-class="!isThisMe(message.username,message.profilePic) ? 'ChatLog__entry' : 'ChatLog__entry ChatLog__entry_mine'" ng-repeat="message in data.messages">
+                        <img class="ChatLog__avatar" ng-src={{message.profilePic}} />
+                        <p class="ChatLog__message">
+                        {{message.text}}
+                        <br>
+                        <!-- <time class="ChatLog__timestamp"> <p style="font-size:10px; color:#5A93C7"> <span am-time-ago="message.timestamp" ></span ></p> </time> -->
+                        <span style="font-size:11px; color:white; ">{{message.username}}</span>  <span style="font-size:10px; color:white; " am-time-ago="message.timestamp" ></span > 
+                        </p>
+                    </li>
+                    </ul>
+                    
+
+        </div>
+
+
+
     </ion-content>
+    <ion-footer-bar keyboard-attach ng-if="showChat"
+	                class="bar-balanced item-input-inset" >
+		<label class="item-input-wrapper" style="margin-left:10px;" >
+			<input type="text"
+			       placeholder="Type your message"
+			       ng-enter="sendMessage()"
+			       ng-model="data.message" />
+		</label >
+		<button class="button button-clear"
+		        ng-click="sendMessage()">
+			<i class="ion ion-paper-airplane"></i>
+		</button >
+	</ion-footer-bar >
 </ion-view>

@@ -5,11 +5,24 @@ angular.module('starter.controllers')
 	var hotTopics = [];
 	var hotnessNumber;
 	var coords = {};
+
+	var incidentObj = {};
+
 	
 	function deg2rad(deg) {
 		  return deg * (Math.PI/180)
 		}
 	return {
+
+		setIncident : function(obj) {
+			incidentObj.data = obj;
+			console.log('INSIDE Setting obj',incidentObj.data);
+		},
+		getIncident : function() {
+			console.log('Returning',incidentObj.data);
+			return incidentObj.data;
+		},
+		
 		setFeeds : function(arr) {
 			feeds = arr;
 		},

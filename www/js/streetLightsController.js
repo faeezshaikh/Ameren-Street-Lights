@@ -18,7 +18,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		lat = $scope.currentCoords.lat;
 		lon = $scope.currentCoords.lon;
 
-		$scope.showPlusButton = false;
+		// $scope.showPlusButton = false;
 			
 		$scope.data = {
 				demographic:'Family',

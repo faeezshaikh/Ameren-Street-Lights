@@ -260,7 +260,7 @@ angular.module('starter.controllers', [])
           })
 
 
-.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL) {
+.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate) {
     // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -286,55 +286,103 @@ angular.module('starter.controllers', [])
 
     var user = PersonService.GetUserDetails();
     $scope.imgUrl = user.img;
-
     $scope.name = user.name;
 
-    var incidentID = $stateParams.incidentId;
-    console.log('incidentID -->', incidentID);
+    $scope.showTrucks = true;
+    $scope.showChat = false;
+
+    $scope.incidentID = $stateParams.incidentId;
+    console.log('incidentID -->', $scope.incidentID);
   
 
-    var incidentRef = new Firebase(FIREBASE_URL + '/streetlights/' + incidentID);
+    var incidentRef = new Firebase(FIREBASE_URL + '/streetlights/' + $scope.incidentID);
 	  
-	  var lastPersonId,lastPersonOrder;
+	  var incident;
 	  
 	  incidentRef.on("value", function(snapshot) {
-		  console.log('Incident object',snapshot.val());
-	        $scope.backgroundImg = snapshot.val().picture;
+          incident = snapshot.val();
+		  console.log('Incident object',incident);
+            
+	        $scope.backgroundImg = CtrlService.getPicUrlFromCameraPic(incident);
+                  CtrlService.setIncident(incident);
 		}, function (errorObject) {
 		  console.log("The read of Incident Object failed: " + errorObject.code);
 		});
-})
+
+        $scope.chatSelected = function() {
+                $scope.showTrucks = false;
+                $scope.showChat = true;
+                $ionicScrollDelegate.$getByHandle('show-page').scrollBottom(true);
+        }
+
+
+        $scope.trucksSelected = function() {
+                 $scope.showTrucks = true;
+                $scope.showChat = false;
+            
+        }
 
 
 
-.controller('ChatCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk) {
-    // Set Header
-    $scope.$parent.showHeader();
-    $scope.$parent.clearFabs();
-    $scope.isExpanded = false;
-    $scope.$parent.setExpanded(false);
-    $scope.$parent.setHeaderFab(false);
+        ///// Chat ////
 
-    // Set Motion
-    $timeout(function() {
-        ionicMaterialMotion.slideUp({
-            selector: '.slide-up'
-        });
-    }, 300);
+        $scope.data = {
+			messages: [],
+			message: '',
+			loading: true,
+			showInfo: false
+		};
 
-    $timeout(function() {
-        ionicMaterialMotion.fadeSlideInRight({
-            startVelocity: 3000
-        });
-    }, 700);
 
-    // Set Ink
-    ionicMaterialInk.displayEffect();
 
-    var user = PersonService.GetUserDetails();
-    $scope.imgUrl = user.img;
+		//////// [ Load Messages on page load ] //////////
+        	var messagesRef = new Firebase(FIREBASE_URL + '/messages');
+		$scope.loadMessages = function () {
 
-    $scope.name = user.name;
+			console.log("Loading data for show ", $scope.feedId);
+
+			var query = messagesRef
+				//			.child("messages")
+				.orderByChild("incidentId")
+				.equalTo($scope.incidentID)
+				.limitToLast(200);
+
+			$scope.data.messages = $firebaseArray(query);
+
+			$scope.data.messages.$loaded().then(function (data) {
+				//			console.log("AngularFire $loaded");
+				$scope.data.loading = false;
+				if ($scope.data.messages.length && $scope.data.messages.length > 1) {
+					CtrlService.addHotTopic($scope.feedId);
+				}
+				
+			});
+		};
+		$scope.loadMessages();
+		//////// [ Load Messages on page load ] //////////
+
+
+
+		//////// [ Send Message ] //////////
+		$scope.sendMessage = function () {
+
+			if ($scope.data.message) {
+				$scope.data.messages.$add({
+					incidentId: $scope.incidentID,
+					text: $scope.data.message,
+					username: $scope.name ,
+					profilePic: $scope.imgUrl,
+					timestamp: new Date().getTime()
+				});
+
+				$scope.data.message = '';
+
+				$ionicScrollDelegate.$getByHandle('show-page').scrollBottom(true);
+			}
+
+		};
+		//////// [ Send Message ] //////////
+  
 })
 
 
