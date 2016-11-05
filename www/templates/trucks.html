@@ -19,13 +19,13 @@
         <div class="tabs tabs-dark tabs-icon-top static">
             <a ng-click="trucksSelected()" class="tab-item">
                 <!--<i class="icon ion-arrow-graph-up-right"></i>-->
-                <i class="icon fa fa-truck" aria-hidden="true" style="color:#A3FD93;"></i> Trucks
+                <i class="icon fa fa-truck" aria-hidden="true" ng-style="trucksStyle" ></i> Trucks
             </a>
             <a ng-click="chatSelected()" class="tab-item">
-                <i class="icon ion-chatbubbles"></i> Discussion
+                <i class="icon ion-chatbubbles"  ng-style="chatStyle" ></i> Discussion
             </a>
             <a ng-click="activitySelected()" class="tab-item">
-                <i class="icon ion-arrow-graph-up-right"></i> Activity
+                <i class="icon ion-arrow-graph-up-right" ng-style="activityStyle" ></i> Activity
             </a>
         </div>
         <div class="list animate-fade-slide-in-right" ng-show="showTrucks">

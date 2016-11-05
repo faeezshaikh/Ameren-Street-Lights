@@ -21,7 +21,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		// $scope.showPlusButton = false;
 			
 		$scope.data = {
-				demographic:'Family',
+				demographic:'StreetLights',
 		};
 
 		if(requirement == 'Male')  $scope.data.demographic = 'Male';
@@ -49,11 +49,10 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 	$scope.$watch('data.demographic',function(){
 		console.log('Changed !',$scope.data.demographic);
-		if($scope.data.demographic == 'Male')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
-		if($scope.data.demographic == 'Female')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
-		if($scope.data.demographic == 'Veteran')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
-		if($scope.data.demographic == 'Family')  $scope.openbeds = all;
+		if($scope.data.demographic == 'StreetLights')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
+		if($scope.data.demographic == 'Vegetation')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
     });
+
 
 	$scope.showDetail = function(e, agent) {
 		$scope.agent1 = agent;
@@ -81,8 +80,9 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	 
 	
 
-	//// Report New Street Light ///
 
+
+	//// Report New Street Light ///
 
 	 $ionicModal.fromTemplateUrl('templates/reportStreetLight.html', {
 		    scope: $scope,
@@ -120,19 +120,18 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		  $scope.composeIdeaModal.hide();
 			var obj = 
 			{
-"agcid": "82040",
-"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
-"zipcd": "63104-3915",
-"agc_ADDR_LONGITUDE": "-90.20798",
-"agc_ADDR_LATITUDE": "38.602318",
-"reporter": $scope.newShelter.name,
-"dateReported": $scope.newShelter.dob.toString(),
-"reporterPhone":$scope.newShelter.phone,
-"reporterEmail":$scope.newShelter.email,
-"address":$scope.newShelter.address,
-"desc":$scope.newShelter.desc,
-
-}
+				"agcid": "82040",
+				"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
+				"zipcd": "63104-3915",
+				"agc_ADDR_LONGITUDE": "-90.20798",
+				"agc_ADDR_LATITUDE": "38.602318",
+				"reporter": $scope.newShelter.name,
+				"dateReported": $scope.newShelter.dob.toString(),
+				"reporterPhone":$scope.newShelter.phone,
+				"reporterEmail":$scope.newShelter.email,
+				"address":$scope.newShelter.address,
+				"desc":$scope.newShelter.desc,
+			}
 			
 			// $scope.openbeds.push();
 			$timeout(function(){
@@ -142,8 +141,6 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		 }
 	//// Report New Street Light ///
 		
-		
-
 	$scope.getPic = function(report) {
 		return CtrlService.getPicUrlFromCameraPic(report);
 	}

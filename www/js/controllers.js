@@ -255,10 +255,6 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope, $ionicModal, $timeout,
-          auth, $state, $window, $firebase, $firebaseAuth,$rootScope,PersonService,FIREBASE_URL,CtrlService) {
-          })
-
 
 .controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate) {
     // Set Header
@@ -284,23 +280,28 @@ angular.module('starter.controllers', [])
     // Set Ink
     ionicMaterialInk.displayEffect();
 
+
+    //// Get Logged in user details ////
     var user = PersonService.GetUserDetails();
     $scope.imgUrl = user.img;
     $scope.name = user.name;
+    //// Get Logged in user details ////
+
 
     $scope.showTrucks = true;
     $scope.showChat = false;
     $scope.showActivity = false;
+    $scope.trucksStyle={color:'#A3FD93'};
 
+
+    //// For the selected incident get details /////
     $scope.incidentID = $stateParams.incidentId;
     console.log('incidentID -->', $scope.incidentID);
   
-
     var incidentRef = new Firebase(FIREBASE_URL + '/streetlights/' + $scope.incidentID);
+	var incident;
 	  
-	  var incident;
-	  
-	  incidentRef.on("value", function(snapshot) {
+	incidentRef.on("value", function(snapshot) {
           incident = snapshot.val();
 		  console.log('Incident object',incident);
             
@@ -308,12 +309,17 @@ angular.module('starter.controllers', [])
                   CtrlService.setIncident(incident);
 		}, function (errorObject) {
 		  console.log("The read of Incident Object failed: " + errorObject.code);
-		});
+	});
+    //// For the selected incident get details /////   
 
         $scope.chatSelected = function() {
                 $scope.showTrucks = false;
                 $scope.showActivity = false;
                 $scope.showChat = true;
+
+                $scope.chatStyle={color:'#A3FD93'};
+                $scope.trucksStyle={color:''};
+                $scope.activityStyle={color:''};
                 $ionicScrollDelegate.$getByHandle('show-page').scrollBottom(true);
         }
 
@@ -322,6 +328,10 @@ angular.module('starter.controllers', [])
                  $scope.showTrucks = true;
                 $scope.showChat = false;
                 $scope.showActivity = false;
+                $scope.chatStyle={color:''};
+                $scope.trucksStyle={color:'#A3FD93'};
+                $scope.activityStyle={color:''};    
+                
             
         }
 
@@ -329,12 +339,17 @@ angular.module('starter.controllers', [])
                  $scope.showTrucks = false;
                 $scope.showChat = false;
                 $scope.showActivity = true;
+                $scope.chatStyle={color:''};
+                $scope.trucksStyle={color:''};
+                $scope.activityStyle={color:'#A3FD93'};  
             
         }
+        
+        
 
 
 
-        ///// Chat ////
+        ///// [ Chat Start ] ////
 
         $scope.data = {
 			messages: [],
@@ -392,6 +407,8 @@ angular.module('starter.controllers', [])
 
 		};
 		//////// [ Send Message ] //////////
+
+        ///// [ Chat End ] ////
   
 })
 
