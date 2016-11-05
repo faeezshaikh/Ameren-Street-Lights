@@ -290,6 +290,7 @@ angular.module('starter.controllers', [])
 
     $scope.showTrucks = true;
     $scope.showChat = false;
+    $scope.showActivity = false;
 
     $scope.incidentID = $stateParams.incidentId;
     console.log('incidentID -->', $scope.incidentID);
@@ -311,6 +312,7 @@ angular.module('starter.controllers', [])
 
         $scope.chatSelected = function() {
                 $scope.showTrucks = false;
+                $scope.showActivity = false;
                 $scope.showChat = true;
                 $ionicScrollDelegate.$getByHandle('show-page').scrollBottom(true);
         }
@@ -319,6 +321,14 @@ angular.module('starter.controllers', [])
         $scope.trucksSelected = function() {
                  $scope.showTrucks = true;
                 $scope.showChat = false;
+                $scope.showActivity = false;
+            
+        }
+
+        $scope.activitySelected = function() {
+                 $scope.showTrucks = false;
+                $scope.showChat = false;
+                $scope.showActivity = true;
             
         }
 

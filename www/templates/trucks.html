@@ -24,7 +24,7 @@
             <a ng-click="chatSelected()" class="tab-item">
                 <i class="icon ion-chatbubbles"></i> Discussion
             </a>
-            <a ui-sref="app.activity" class="tab-item">
+            <a ng-click="activitySelected()" class="tab-item">
                 <i class="icon ion-arrow-graph-up-right"></i> Activity
             </a>
         </div>
@@ -140,6 +140,11 @@
 
         </div>
 
+
+        <div ng-show="showActivity">
+ <h4 class="content padding double-padding-x">Status History</h4>
+      
+        </div>
 
 
     </ion-content>
