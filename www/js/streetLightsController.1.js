@@ -9,24 +9,45 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	$scope.showPlusButton = true;
 	
 	function init() {
+		var needyId = $stateParams.needyId; // Not using it..really.
 		var lat,lon,requirement;
 		
 		// Call Service to get Current Co-ords
 		$scope.currentCoords  = CtrlService.getCoords();
 		console.log('Currnet coords:' , $scope.currentCoords.lat + ', ' + $scope.currentCoords.lon);
 
-		lat = $scope.currentCoords.lat;
-		lon = $scope.currentCoords.lon;
 
-		$scope.showPlusButton = false;
+		if(needyId) {
+			var baseRef = new Firebase(FIREBASE_URL + '/needy/' + needyId);
+			$scope.showPlusButton = false;
 			
-		$scope.data = {
+			baseRef.on("value", function(snapshot) {
+				var needyPerson = snapshot.val();
+				lat = needyPerson.lat;
+				lon = needyPerson.long;
+				requirement = 'Male'; // TODO: Fetch from Firebase
+
+				}, function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+				});
+		} else {
+					lat = $scope.currentCoords.lat;
+					lon = $scope.currentCoords.lon;
+		}
+
+				// Call Service to get data
+		// HudService.GetHudAgents(lat,lon,15).then(function(response) {
+		// 	$scope.hudagents = response.data;
+		// });
+
+			$scope.data = {
 				demographic:'Family',
-		};
+			};
 
-		if(requirement == 'Male')  $scope.data.demographic = 'Male';
+			if(requirement == 'Male')  $scope.data.demographic = 'Male';
 
-		var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
+		 var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
+
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
 	  $scope.streetlights = $firebaseArray(scrollRef);
 		scrollRef.scroll.next(100);
@@ -54,7 +75,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		if($scope.data.demographic == 'Veteran')  $scope.openbeds = $filter('filter')(all, { requirement: 'Veteran' });
 		if($scope.data.demographic == 'Family')  $scope.openbeds = all;
     });
-
+		
 	$scope.showDetail = function(e, agent) {
 		$scope.agent1 = agent;
 	    $scope.map.showInfoWindow('foo-iw', agent.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505

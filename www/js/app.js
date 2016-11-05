@@ -117,35 +117,35 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         }
       })
 
-  .state('app.needy', {
-        url: '/needy',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/needy.html',
-            controller: 'NeedyCtrl'
-          }
-        }
-      })
+  // .state('app.needy', {
+  //       url: '/needy',
+  //       views: {
+  //         'menuContent': {
+  //           templateUrl: 'templates/needy.html',
+  //           controller: 'NeedyCtrl'
+  //         }
+  //       }
+  //     })
 
-  .state('app.needyDetails', {
-        url: '/needy/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/needyDetails.html',
-            controller: 'NeedyDetailsCtrl'
-          }
-        }
-      })
+  // .state('app.needyDetails', {
+  //       url: '/needy/:needyId',
+  //       views: {
+  //         'menuContent': {
+  //           templateUrl: 'templates/needyDetails.html',
+  //           controller: 'NeedyDetailsCtrl'
+  //         }
+  //       }
+  //     })
 
-            .state('app.needyChat', {
-        url: '/needyChat/:needyId',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/needyChat.html',
-            controller: 'NeedyChatCtrl'
-          }
-        }
-      })
+  //           .state('app.needyChat', {
+  //       url: '/needyChat/:needyId',
+  //       views: {
+  //         'menuContent': {
+  //           templateUrl: 'templates/needyChat.html',
+  //           controller: 'NeedyChatCtrl'
+  //         }
+  //       }
+  //     })
 
   .state('app.settings', {
     	   url: '/settings',
@@ -180,7 +180,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
 
   
       .state('app.trucks', {
-        url: '/trucks',
+        url: '/trucks/:incidentId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/trucks.html',
@@ -198,7 +198,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
     })
 
      .state('app.chat', {
-        url: '/chat',
+        url:  '/chat/:incidentId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/chat.html',

@@ -260,7 +260,7 @@ angular.module('starter.controllers', [])
           })
 
 
-.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk) {
+.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL) {
     // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -288,6 +288,21 @@ angular.module('starter.controllers', [])
     $scope.imgUrl = user.img;
 
     $scope.name = user.name;
+
+    var incidentID = $stateParams.incidentId;
+    console.log('incidentID -->', incidentID);
+  
+
+    var incidentRef = new Firebase(FIREBASE_URL + '/streetlights/' + incidentID);
+	  
+	  var lastPersonId,lastPersonOrder;
+	  
+	  incidentRef.on("value", function(snapshot) {
+		  console.log('Incident object',snapshot.val());
+	        $scope.backgroundImg = snapshot.val().picture;
+		}, function (errorObject) {
+		  console.log("The read of Incident Object failed: " + errorObject.code);
+		});
 })
 
 
