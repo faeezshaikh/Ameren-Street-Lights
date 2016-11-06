@@ -8,7 +8,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
      'ngCordova', 'firebase','angularMoment','angular-storage','ngMap','ionic-material'])
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
-.directive('groupedRadio', function() {
+/*.directive('groupedRadio', function() {
   return {
     restrict: 'A',
     require: 'ngModel',
@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
       element.addClass('button');
       element.on('click', function(e) {
         scope.$apply(function() {
-          ngModelCtrl.$setViewValue(scope.value);
+            ngModelCtrl.$setViewValue(scope.value);
         });
       });
 
@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
       });
     }
   };
-})
+})  */
 .run(function($ionicPlatform, auth, $rootScope, store,$ionicModal,$window,$http,$cordovaPush,$cordovaGeolocation) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

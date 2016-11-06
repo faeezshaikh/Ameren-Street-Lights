@@ -34,6 +34,22 @@ th{
   font-weight: bold;
 }
 
+
+  .round {
+   border: 2px solid #a1a1a1;
+    padding: 10px 40px;
+    width: 300px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+  .round2 {
+   border: 2px solid #a1a1a1;
+    padding: 10px 40px;
+    width: 300px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 </style>
  <ion-pane class="background-color-grey">
       <ion-content view-title="Hud agents" header-shrink scroll-event-interval="5" delegate-handle="hudagents" scroll="false">
@@ -54,13 +70,13 @@ th{
 			 <!-- Search Bar Header -->
 
 
-    <div class="button-bar padding">
-      <a grouped-radio="'StreetLights'" ng-model="data.demographic">Street Lights</a>
-       <!--<a grouped-radio="'Veteran'" ng-model="data.demographic">Vsets</a>     -->
-      <a grouped-radio="'Vegetation'" ng-model="data.demographic">Vegetation</a>
-       <!--<a grouped-radio="'Female'" ng-model="data.demographic">Female</a>-->
+
+     <div class="button-bar padding">
+        <div class="button-bar">
+            <a class="round"  ng-click="streetlightsSelected()"><div class="text-center">Street Lights</div></a>
+            <a class="round2" ng-click="vegetationSelected()"><div class="text-center">Vegetation</div></a>
+        </div>
     </div>
-		    
 		    <!-- Map Start -->
            <map center="{{currentCoords.lat}},{{currentCoords.lon}}"
            		zoom="10"
@@ -69,11 +85,11 @@ th{
            		
            		 <marker position="{{[currentCoords.lat,currentCoords.lon]}}" icon="img/here.png"></marker>
            		 
-                <!--Open Shelters-->
-           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in streetlights" 
+                <!--Street Lights-->
+           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in mapMarkers" 
            		 		position="{{[agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE]}}"
            		 		on-click="showDetail(event,agent)"
-										icon="img/medical.png"
+										icon="{{mapIcon}}"
 										animation = "DROP"
            		 		clickable="true">
 
@@ -84,7 +100,10 @@ th{
                         <div class="text-center">
                           <img style="max-width:50%;max-height:50%" class="text-center" ng-src="{{getPic(agent1)}}"/>
                         </div>
-                        <!--<h4 class="text-center">Cafe Name&nbsp;<sup><small style="color:red;">Reported</small></sup></h4 > -->
+
+                        <div class="text-center" ng-show="vegetationSelected==true">
+                          <img style="max-width:60%;max-height:60%" class="text-center" ng-src="https://ridingwiththetopdown.files.wordpress.com/2011/08/004.jpg"/>
+                        </div>
 
                         <table style="width:100%">
                           <tr>
@@ -123,13 +142,16 @@ th{
                       </div >
                     </div >
                   </info-window >
+
+
+
+
+              
            		
            		 
            		 </marker> 	
-                  <!--Open Shelters-->
+                  <!--Street Lights-->
 
-
-                 
 
            </map>
            <!-- Map End -->

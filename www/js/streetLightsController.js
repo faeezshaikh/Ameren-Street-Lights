@@ -7,9 +7,13 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	$scope.map;
 	var all = [];
 	$scope.showPlusButton = true;
+	var streetLightMarkers,vegetationMarkers;
 	
+
+
 	function init() {
 		var lat,lon,requirement;
+		$scope.vegetationSelected = false;
 		
 		// Call Service to get Current Co-ords
 		$scope.currentCoords  = CtrlService.getCoords();
@@ -18,45 +22,63 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		lat = $scope.currentCoords.lat;
 		lon = $scope.currentCoords.lon;
 
-		// $scope.showPlusButton = false;
-			
-		$scope.data = {
-				demographic:'StreetLights',
-		};
-
-		if(requirement == 'Male')  $scope.data.demographic = 'Male';
+	
 
 		var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
-	  $scope.streetlights = $firebaseArray(scrollRef);
+		streetLightMarkers = $firebaseArray(scrollRef);
+		$scope.mapMarkers = streetLightMarkers;
 		scrollRef.scroll.next(100);
-		console.log('StreetLightsCtrl:', $scope.streetlights);
-
-
-
 		
+
+
+		var vegRef = new Firebase(FIREBASE_URL + '/vegetation');
+	  var scrollRef1 = new Firebase.util.Scroll(vegRef, 'agcid');
+		vegetationMarkers = $firebaseArray(scrollRef1);
+		scrollRef1.scroll.next(100);
+
+		mapInit();
+
+	};
+	init();
+	
+
+	function mapInit() {
+				
 		// Initialise Map
 		 NgMap.getMap().then(function(map) {
 			    console.log(map.getCenter());
 			    $scope.map = map;
+					$scope.mapIcon= 'img/medical.png';
 			    console.log('markers', map.markers);
 			    
 			  });
-	};
-	init();
+	}
 	
-	
+	$scope.streetlightsSelected = function(){
+			$scope.mapMarkers = streetLightMarkers;
+			$scope.mapIcon= 'img/medical.png';
+			// $scope.showStreetLightMarkers = true;
+			$scope.vegetationSelected = false;
+	}
 
-	$scope.$watch('data.demographic',function(){
-		console.log('Changed !',$scope.data.demographic);
-		if($scope.data.demographic == 'StreetLights')  $scope.openbeds = $filter('filter')(all, { requirement: 'Male' });
-		if($scope.data.demographic == 'Vegetation')  $scope.openbeds = $filter('filter')(all, { requirement: 'Female' });
-    });
+
+	$scope.vegetationSelected = function(){
+		$scope.mapMarkers = vegetationMarkers;
+		$scope.mapIcon= 'img/shelters.png';
+		// $scope.showStreetLightMarkers = false;
+
+		$scope.vegetationSelected = true;
+	}
+
 
 
 	$scope.showDetail = function(e, agent) {
+		console.log('Show Detail111 called!', agent);
+		
 		$scope.agent1 = agent;
-	    $scope.map.showInfoWindow('foo-iw', agent.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
+			$scope.map.showInfoWindow('foo-iw', agent.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
+					console.log('vegetation window');
 	  };
 	
 	// Calculate distance of each agency from current location
@@ -78,7 +100,6 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		 $scope.$broadcast('scroll.refreshComplete');
 	  }
 	 
-	
 
 
 
@@ -142,7 +163,10 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	//// Report New Street Light ///
 		
 	$scope.getPic = function(report) {
-		return CtrlService.getPicUrlFromCameraPic(report);
+		console.log('Getting Pic for :', report);
+		var picUrl = CtrlService.getPicUrlFromCameraPic(report);
+		console.log('Returning Pictuer URL :' ,picUrl);
+		return picUrl;;
 	}
 	
 });
