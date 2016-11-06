@@ -37,6 +37,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		vegetationMarkers = $firebaseArray(scrollRef1);
 		scrollRef1.scroll.next(100);
 
+		$scope.ligthstyle = {background:'#33cd5f',color:'white'};
 		mapInit();
 
 	};
@@ -60,6 +61,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 			$scope.mapIcon= 'img/medical.png';
 			// $scope.showStreetLightMarkers = true;
 			$scope.vegetationSelected = false;
+			$scope.ligthstyle = {background:'#33cd5f',color:'white'};
+		$scope.vegstyle = {background:''};
 	}
 
 
@@ -69,6 +72,9 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		// $scope.showStreetLightMarkers = false;
 
 		$scope.vegetationSelected = true;
+
+		$scope.ligthstyle = {background:''};
+		$scope.vegstyle = {background:'#33cd5f','color':'white'};
 	}
 
 

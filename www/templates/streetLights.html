@@ -36,18 +36,20 @@ th{
 
 
   .round {
-   border: 2px solid #a1a1a1;
+   border: 2px solid #33cd5f;
     padding: 10px 40px;
     width: 300px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    color:grey;
 }
   .round2 {
-   border: 2px solid #a1a1a1;
+   border: 2px solid #33cd5f;
     padding: 10px 40px;
     width: 300px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    color:grey;
 }
 
 </style>
@@ -73,8 +75,8 @@ th{
 
      <div class="button-bar padding">
         <div class="button-bar">
-            <a class="round"  ng-click="streetlightsSelected()"><div class="text-center">Street Lights</div></a>
-            <a class="round2" ng-click="vegetationSelected()"><div class="text-center">Vegetation</div></a>
+            <a class="round"  ng-click="streetlightsSelected()" ng-style="ligthstyle" ><div class="text-center">Street Lights</div></a>
+            <a class="round2" ng-click="vegetationSelected()" ng-style="vegstyle"><div class="text-center">Vegetation</div></a>
         </div>
     </div>
 		    <!-- Map Start -->
