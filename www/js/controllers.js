@@ -256,7 +256,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate) {
+.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window) {
     // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -280,6 +280,9 @@ angular.module('starter.controllers', [])
     // Set Ink
     ionicMaterialInk.displayEffect();
 
+    $scope.reload = function() {
+       $window.location.reload();
+    }
 
     //// Get Logged in user details ////
     var user = PersonService.GetUserDetails();

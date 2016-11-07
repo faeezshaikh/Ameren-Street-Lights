@@ -1,4 +1,3 @@
-
 <ion-view view-title="Repair Trucks">
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
@@ -6,11 +5,11 @@
     <ion-content ng-class="{expanded:$scope.isExpanded}" delegate-handle="show-page">
         <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
         <div class="hero slide-up" style="background-image: url('{{backgroundImg}}');">
-        
+
             <div class="content">
                 <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
                 <!--<div class="avatar" style="background-image: url('{{imgUrl}}');"></div>-->
-                <div class="avatar" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
+                <div class="avatar" ng-click="reload()" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
                 <!--https://www.iconexperience.com/_img/g_collection_png/standard/512x512/delivery_truck.png-->
                 <h3><a class="light">{{name}}</a></h3>
                 <h4>{{name}}</h4>
@@ -19,13 +18,13 @@
         <div class="tabs tabs-dark tabs-icon-top static">
             <a ng-click="trucksSelected()" class="tab-item">
                 <!--<i class="icon ion-arrow-graph-up-right"></i>-->
-                <i class="icon fa fa-truck" aria-hidden="true" ng-style="trucksStyle" ></i> Trucks
+                <i class="icon fa fa-truck" aria-hidden="true" ng-style="trucksStyle"></i> Trucks
             </a>
             <a ng-click="chatSelected()" class="tab-item">
-                <i class="icon ion-chatbubbles"  ng-style="chatStyle" ></i> Discussion
+                <i class="icon ion-chatbubbles" ng-style="chatStyle"></i> Discussion
             </a>
             <a ng-click="activitySelected()" class="tab-item">
-                <i class="icon ion-arrow-graph-up-right" ng-style="activityStyle" ></i> Activity
+                <i class="icon ion-arrow-graph-up-right" ng-style="activityStyle"></i> Activity
             </a>
         </div>
         <div class="list animate-fade-slide-in-right" ng-show="showTrucks">
@@ -36,63 +35,63 @@
                 <p>Da illest illegitimate</p>
                 <i class="icon ion-chatbubble muted"></i>
             </a>-->
-             <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-              <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
                 <p><i class="ion ion-ios-telephone"></i>&nbsp; Call Driver</p>
                 <i class="icon ion-paper-airplane muted"></i>
             </a>
-                <a class="item item-thumbnail-left item-icon-right" href="#">
+            <a class="item item-thumbnail-left item-icon-right" href="#">
                 <img src="http://jmonsite.com/img/icon-reefer_truck.png">
                 <h2>Pretty Hate Machine</h2>
                 <p><i class="ion ion-navigate"></i>&nbsp; 6 miles away</p>
@@ -103,47 +102,77 @@
 
         <div ng-show="showChat">
             <h4 class="content padding double-padding-x">Discuss about this Issue</h4>
-                	
-                <!-- Loading Indicator -->
-                    
-                    <div class="row" ng-if="data.loading" >
-                        <div class="col">
-                            <div class="text-center">
-                            <ion-spinner icon="ripple" ></ion-spinner >
-                                <p style="color:gray">Loading messages...</p >
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Empty room message -->
-                    <div class="row" ng-show="!data.loading && data.messages.length == 0">
-                        <div class="col">
-                            <div class="text-center">
-                                <!-- <p style="text-align: center; color:gray">No comments yet. Be the first!</p> -->
-                                <p style="color:gray">No comments yet. Be the first!</p>
-                            </div>
-                        </div>
+            <!-- Loading Indicator -->
+
+            <div class="row" ng-if="data.loading">
+                <div class="col">
+                    <div class="text-center">
+                        <ion-spinner icon="ripple"></ion-spinner>
+                        <p style="color:gray">Loading messages...</p>
                     </div>
-                
-                    <ul class="ChatLog">
-                    <li ng-class="!isThisMe(message.username,message.profilePic) ? 'ChatLog__entry' : 'ChatLog__entry ChatLog__entry_mine'" ng-repeat="message in data.messages">
-                        <img class="ChatLog__avatar" ng-src={{message.profilePic}} />
-                        <p class="ChatLog__message">
+                </div>
+            </div>
+
+            <!-- Empty room message -->
+            <div class="row" ng-show="!data.loading && data.messages.length == 0">
+                <div class="col">
+                    <div class="text-center">
+                        <!-- <p style="text-align: center; color:gray">No comments yet. Be the first!</p> -->
+                        <p style="color:gray">No comments yet. Be the first!</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="ChatLog">
+                <li ng-class="!isThisMe(message.username,message.profilePic) ? 'ChatLog__entry' : 'ChatLog__entry ChatLog__entry_mine'" ng-repeat="message in data.messages">
+                    <img class="ChatLog__avatar" ng-src={{message.profilePic}} />
+                    <p class="ChatLog__message">
                         {{message.text}}
                         <br>
                         <!-- <time class="ChatLog__timestamp"> <p style="font-size:10px; color:#5A93C7"> <span am-time-ago="message.timestamp" ></span ></p> </time> -->
-                        <span style="font-size:11px; color:white; ">{{message.username}}</span>  <span style="font-size:10px; color:white; " am-time-ago="message.timestamp" ></span > 
+                        <span style="font-size:11px; color:white; ">{{message.username}}</span> <span style="font-size:10px; color:white; "
+                            am-time-ago="message.timestamp"></span > 
                         </p>
                     </li>
                     </ul>
                     
 
         </div>
-
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        </style>
 
         <div ng-show="showActivity">
- <h4 class="content padding double-padding-x">Status History</h4>
-      
+                <!--<h4 class="content padding double-padding-x">Status History</h4>-->
+                <table style="width:100%">
+                    <tr>
+                        <td  width="50%"><img style="max-width:70%;max-height:70%;" ng-src="{{backgroundImg}}"/></td>
+                        <td  width="50%" style="vertical-align:top; text-align:left;">Issue: 
+                            <ul>
+                                <li type="square"> Lights flickering.</li>
+                                <li type="square">Lights go on and off at unusual times.</li>
+                                <li type="square">Customers complained about flickering light and open wires.</li>
+                            </ul>
+                             
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Telephone:</td>
+                        <td width="50%">55577854</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Location</td>
+                        <td width="50%">55577855</td>
+                    </tr>
+                    </table>
         </div>
 
 
