@@ -178,6 +178,17 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         }
       })
 
+       .state('app.heatmap', {
+        url: '/heatmap',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/heatmap.html',
+            controller: 'HeatMapCtrl'
+          }
+        }
+      })
+
+
   
       .state('app.trucks', {
         url: '/trucks/:incidentId',

@@ -1,0 +1,76 @@
+
+<ion-view view-title="HeatMap">
+
+ <style>
+nmap {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+ 
+.button-bar > .button{
+  border: 1px solid #cfcfcf;
+}
+.button-bar > .button:last-child {
+  border-radius: 0px 20px 20px 0px !important;
+}
+.button-bar > .button:first-child {
+    border-radius: 20px 0px 0px 20px !important;
+}
+
+
+
+div[ng-controller=HeatMapCtrl] {
+      position:relative;
+    }
+    div[ng-controller=HeatMapCtrl] #panel{
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      margin-left: -180px;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+    }
+    </style>
+<ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in " scroll="false">
+       
+       
+
+<!--Heatmap-->
+<!--<map  zoom="10" center="{{currentCoords.lat}},{{currentCoords.lon}}" map-type-id="SATELLITE">-->
+  <map zoom="13" center="37.774546, -122.433523" map-type-id="SATELLITE">
+   <drawing-manager
+     on-overlaycomplete="onMapOverlayCompleted()"
+     position="ControlPosition.TOP_CENTER"
+     drawingModes="POLYGON,CIRCLE"
+     drawingControl="true"
+     circleOptions="fillColor: '#FFFF00';fillOpacity: 1;strokeWeight: 5;clickable: false;zIndex: 1;editable: true;" >
+   </drawing-manager>
+    <heatmap-layer id="foo" data="taxiData"></heatmap-layer>
+ </map>
+  <!--<div ng-controller="HeatMapCtrl as vm">
+      <div id="panel">
+        <button ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
+        <button ng-click="vm.changeGradient()">Change gradient</button>
+        <button ng-click="vm.changeRadius()">Change radius</button>
+        <button ng-click="vm.changeOpacity()">Change opacity</button>
+      </div>
+      <ng-map zoom="13" center="37.774546, -122.433523" map-type-id="SATELLITE">
+
+        <drawing-manager on-overlaycomplete="onMapOverlayCompleted()" position="ControlPosition.TOP_CENTER" drawingModes="POLYGON,CIRCLE"
+          drawingControl="true" circleOptions="fillColor: 'pink';fillOpacity: 1;strokeWeight: 5;clickable: false;zIndex: 1;editable: true;">
+        </drawing-manager>
+        <heatmap-layer id="foo" data="taxiData"></heatmap-layer>
+      </ng-map>
+  </div>-->
+
+<!--Heatmap-->
+
+ 
+
+
+    </ion-content>
+ </ion-view>
+
