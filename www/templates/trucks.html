@@ -2,9 +2,9 @@
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
     <link href="css/md-custom.css" rel="stylesheet">
-    <ion-content ng-class="{expanded:$scope.isExpanded}" delegate-handle="show-page">
-        <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
-        <div class="hero slide-up" style="background-image: url('{{backgroundImg}}');">
+
+  <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
+        <div class="hero slide-up" style="margin-top:40px!important; background-image: url('{{backgroundImg}}');">
 
             <div class="content">
                 <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
@@ -27,6 +27,11 @@
                 <i class="icon ion-arrow-graph-up-right" ng-style="activityStyle"></i> Activity
             </a>
         </div>
+
+
+
+    <ion-content style="margin-top:250px!important;" ng-class="{expanded:$scope.isExpanded}" delegate-handle="show-page">
+      
         <div class="list animate-fade-slide-in-right" ng-show="showTrucks">
             <h4 class="content padding double-padding-x">Nearby Trucks</h4>
             <!--<a ui-sref="app.friends" class="item item-avatar item-icon-right">
@@ -150,7 +155,7 @@
         }
         </style>
 
-        <div ng-show="showActivity">
+        <div ng-show="showActivity"  style="margin-top:5px!important;">
                 <!--<h4 class="content padding double-padding-x">Status History</h4>-->
                 <table style="width:100%">
                     <tr>

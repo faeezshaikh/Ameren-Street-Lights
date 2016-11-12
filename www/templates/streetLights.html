@@ -55,30 +55,14 @@ th{
 </style>
  <ion-pane class="background-color-grey">
       <ion-content view-title="Hud agents" header-shrink scroll-event-interval="5" delegate-handle="hudagents" scroll="false">
-           
-           <!--<ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh"></ion-refresher> -->
-            
-            <!-- Search Bar Header -->
-            <!-- Bug - If you filter then click on the marker the info-window doesnt get values -->
-	       <!--<div class="bar bar-header  bar-balanced item-input-inset" scroll="false">
-		      <label class="item-input-wrapper">
-		        <i class="icon ion-ios-search placeholder-icon"></i>
-		        <input  type="search" placeholder="Search" ng-model="searchText">
-		      </label>
-		      <button  class="button button-icon ion-android-cancel" ng-click="searchText=''; cancelFilter();">
-		      </button>
-		      	({{ filtered.length}})
-		    </div>-->
-			 <!-- Search Bar Header -->
+    
 
-
-
-     <div class="button-bar padding">
+     <!--<div class="button-bar padding">
         <div class="button-bar">
             <a class="round"  ng-click="streetlightsSelected()" ng-style="ligthstyle" ><div class="text-center">Street Lights</div></a>
             <a class="round2" ng-click="vegetationSelected()" ng-style="vegstyle"><div class="text-center">Vegetation</div></a>
         </div>
-    </div>
+    </div>-->
 		    <!-- Map Start -->
            <map center="{{currentCoords.lat}},{{currentCoords.lon}}"
            		zoom="10"

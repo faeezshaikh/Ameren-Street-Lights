@@ -169,9 +169,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	//// Report New Street Light ///
 		
 	$scope.getPic = function(report) {
-		console.log('Getting Pic for :', report);
 		var picUrl = CtrlService.getPicUrlFromCameraPic(report);
-		console.log('Returning Pictuer URL :' ,picUrl);
 		return picUrl;;
 	}
 	
