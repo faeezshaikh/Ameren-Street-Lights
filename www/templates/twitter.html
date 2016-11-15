@@ -1,0 +1,47 @@
+<ion-view title="Ameren Tweets"  class="show" >
+
+	<ion-pane class="background-color-grey">
+	
+	      <ion-content  view-title="Feed" header-shrink scroll-event-interval="5">
+	      <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh"></ion-refresher> 
+	       <div class="bar bar-header item-input-inset">
+		      <label class="item-input-wrapper">
+		        <i class="icon ion-ios-search placeholder-icon"></i>
+		        <input  type="search" placeholder="Search" ng-model="searchText">
+		      </label>
+		      <button  class="button button-icon ion-android-cancel" ng-click="searchText=''; cancelFilter();">
+		      </button>
+		      	({{ filtered.length}})
+		    </div>
+		    
+		 <!--    <twitter-timeline>
+    <a class="twitter-timeline"
+       href=https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw
+       data-widget-id="673710543212052480">
+       Tweets from https://twitter.com/IAmAru/lists/food-trucks
+    </a>
+<twitter-timeline> -->
+		    <ion-list> 
+		   <!--    <ion-item ng-if="newTweet" ng-click="doRefresh()">
+				 New tweets (Pull to Refresh)
+		      </ion-item>  -->
+    			<ion-item ng-repeat="tweet in filtered = (tweets | filter:searchText)">
+					 <twitter-widget> 
+						<blockquote class="twitter-tweet tw-align-center" data-lang="en">
+								<a ng-href="https://twitter.com/{{tweet.screenName}}/status/{{tweet.statusId}}" ></a>
+								<!--  {{tweet.key1}} - {{tweet.key3}} - {{tweet.key2}} --> 
+								{{tweet.text}}
+						</blockquote> 
+					</twitter-widget> 
+					
+					<script async src="lib/widgets.js" charset="utf-8"></script>
+					</ion-item>
+			  </ion-list>
+			  	
+					
+			<ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+					
+      
+	      </ion-content>
+	    </ion-pane>
+</ion-view >

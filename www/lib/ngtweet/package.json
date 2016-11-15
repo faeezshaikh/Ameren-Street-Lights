@@ -1,0 +1,93 @@
+{
+  "_args": [
+    [
+      "ngtweet",
+      "/Users/faeezshaikh/git/slight"
+    ]
+  ],
+  "_from": "ngtweet@*",
+  "_id": "ngtweet@0.6.1",
+  "_inCache": true,
+  "_location": "/ngtweet",
+  "_nodeVersion": "5.11.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ngtweet-0.6.1.tgz_1469377148275_0.7716745957732201"
+  },
+  "_npmUser": {
+    "email": "arusahni@gmail.com",
+    "name": "arusahni"
+  },
+  "_npmVersion": "3.8.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "ngtweet",
+    "raw": "ngtweet",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ngtweet/-/ngtweet-0.6.1.tgz",
+  "_shasum": "03c3c3fa11a82921cff25ff797db0d70ce0d4d8d",
+  "_shrinkwrap": null,
+  "_spec": "ngtweet",
+  "_where": "/Users/faeezshaikh/git/slight",
+  "author": {
+    "email": "arusahni@gmail.com",
+    "name": "Aru Sahni",
+    "url": "http://arusahni.net/"
+  },
+  "bugs": {
+    "url": "https://github.com/arusahni/ngtweet/issues"
+  },
+  "dependencies": {},
+  "description": "An AngularJS module that provides an interface into Twitter's embedded widget library.",
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-serve": "^1.0.0",
+    "gulp-uglify": "^1.2.0",
+    "node-libs-browser": "^0.5.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "03c3c3fa11a82921cff25ff797db0d70ce0d4d8d",
+    "tarball": "https://registry.npmjs.org/ngtweet/-/ngtweet-0.6.1.tgz"
+  },
+  "gitHead": "481a27638756ce3c3b56c126d34cab65298ba3fa",
+  "homepage": "https://github.com/arusahni/ngtweet/",
+  "installable": true,
+  "keywords": [
+    "angular",
+    "angularjs",
+    "embed",
+    "tweet",
+    "twitter",
+    "widget"
+  ],
+  "license": "MIT",
+  "main": "./dist/ngtweet.js",
+  "maintainers": [
+    {
+      "name": "arusahni",
+      "email": "arusahni@gmail.com"
+    }
+  ],
+  "name": "ngtweet",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arusahni/ngtweet.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.6.1"
+}

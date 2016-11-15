@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0', 'angular-storage',
-     'ngCordova', 'firebase','angularMoment','angular-storage','ngMap','ionic-material'])
+     'ngCordova', 'firebase','angularMoment','angular-storage','ngMap','ionic-material','ngtweet'])
 
 .constant('FIREBASE_URL','https://homelesscare.firebaseio.com/')    
 /*.directive('groupedRadio', function() {
@@ -187,6 +187,18 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
           }
         }
       })
+
+
+      .state('app.twitter', {
+        url: '/twitter',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/twitter.html',
+            controller: 'TwitterCtrl'
+          }
+        }
+      })
+
 
 
   
