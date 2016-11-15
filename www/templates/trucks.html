@@ -4,7 +4,7 @@
     <link href="css/md-custom.css" rel="stylesheet">
 
   <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
-        <div class="hero slide-up" style="margin-top:40px!important; background-image: url('{{backgroundImg}}');">
+        <div class="hero slide-up" style="margin-top:40px!important; background-image: url('{{backgroundImg}}');" ng-click="expand()">
 
             <div class="content">
                 <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
@@ -156,6 +156,7 @@
         </style>
 
         <div ng-show="showActivity"  style="margin-top:5px!important;">
+            <h4 class="text-center content padding">Details</h4>
                 <!--<h4 class="content padding double-padding-x">Status History</h4>-->
                 <table style="width:100%">
                     <tr>

@@ -87,11 +87,11 @@ angular.module('starter.controllers', [])
 
     $scope.hasHeader = function() {
         var content = document.getElementsByTagName('ion-content');
-        for (var i = 0; i < content.length; i++) {
-            if (!content[i].classList.contains('has-header')) {
-                content[i].classList.toggle('has-header');
-            }
-        }
+        // for (var i = 0; i < content.length; i++) {
+        //     if (!content[i].classList.contains('has-header')) {
+        //         content[i].classList.toggle('has-header');
+        //     }
+        // }
 
     };
 
@@ -307,28 +307,39 @@ angular.module('starter.controllers', [])
 
 
 .controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window) {
-    // Set Header
+  
+
+    function animate() {
+        // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
     $scope.isExpanded = false;
     $scope.$parent.setExpanded(false);
     $scope.$parent.setHeaderFab(false);
 
+
     // Set Motion
-    $timeout(function() {
-        ionicMaterialMotion.slideUp({
-            selector: '.slide-up'
-        });
-    }, 300);
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
-    $timeout(function() {
-        ionicMaterialMotion.fadeSlideInRight({
-            startVelocity: 3000
-        });
-    }, 700);
+        $timeout(function() {
+            ionicMaterialMotion.fadeSlideInRight({
+                startVelocity: 3000
+            });
+        }, 700);
 
-    // Set Ink
-    ionicMaterialInk.displayEffect();
+        // Set Ink
+        ionicMaterialInk.displayEffect();
+
+    }
+   animate();
+    $scope.expand = function() {
+        console.log('animate called');
+      animate();
+    }
 
     $scope.reload = function() {
        $window.location.reload();
