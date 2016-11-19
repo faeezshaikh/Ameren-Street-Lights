@@ -145,26 +145,31 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
  		$scope.finalSubmit = function() {
 		  // $scope.confirmationModal.hide();
 		  $scope.composeIdeaModal.hide();
-			var obj = 
-			{
-				"agcid": "82040",
-				"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
-				"zipcd": "63104-3915",
-				"agc_ADDR_LONGITUDE": "-90.20798",
-				"agc_ADDR_LATITUDE": "38.602318",
-				"reporter": $scope.newShelter.name,
-				"dateReported": $scope.newShelter.dob.toString(),
-				"reporterPhone":$scope.newShelter.phone,
-				"reporterEmail":$scope.newShelter.email,
-				"address":$scope.newShelter.address,
-				"desc":$scope.newShelter.desc,
-			}
+			var obj = {};
+			// {
+			// 	"agcid": "82040",
+			// 	"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
+			// 	"zipcd": "63104-3915",
+			// 	"agc_ADDR_LONGITUDE": "-90.20798",
+			// 	"agc_ADDR_LATITUDE": "38.602318",
+			// 	"reporter": $scope.newShelter.name,
+			// 	"dateReported": $scope.newShelter.dob.toString(),
+			// 	"reporterPhone":$scope.newShelter.phone,
+			// 	"reporterEmail":$scope.newShelter.email,
+			// 	"address":$scope.newShelter.address,
+			// 	"desc":$scope.newShelter.desc,
+			// }
 			
 			// $scope.openbeds.push();
 			$timeout(function(){
 				$scope.streetlights.$add(obj); 
 			},400);
 				
+		 }
+
+
+		 $scope.addPicture = function() {
+			 console.log('Add picture');
 		 }
 	//// Report New Street Light ///
 		
