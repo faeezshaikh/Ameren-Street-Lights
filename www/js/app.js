@@ -168,12 +168,12 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
 
   
 
-    .state('app.streetLights', {
-        url: '/streetLights',
+    .state('app.map', {
+        url: '/map',
         views: {
           'menuContent': {
-            templateUrl: 'templates/streetLights.html',
-            controller: 'StreetLightsCtrl'
+            templateUrl: 'templates/map.html',
+            controller: 'MapCtrl'
           }
         }
       })
@@ -267,10 +267,10 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'starter.controllers', 'auth0
         console.log('State name = ',state.current.name);
         if (state.current.name == '' || state.current.name == 'app.chat') {
         	
-          state.go('app.streetLights');
+          state.go('app.map');
         } 
         else {
-          state.go('app.streetLights');  // Default landing page
+          state.go('app.map');  // Default landing page
         }
         return $location.path();
       });
