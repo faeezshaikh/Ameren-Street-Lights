@@ -133,7 +133,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	$scope.autoFill = function () {
 				$scope.newShelter = {
 					name: 'Johnny Cash',
-					dob: new Date('Dec 1, 2016'),
+					// dob: new Date('Dec 1, 2016'),
+					dob: new Date(),
 					phone: '314-876-3452',
 					email: 'johnny@gmail.com',
 					address: '30 Plaza Sq. St Louis MO 63010',
@@ -145,32 +146,82 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
  		$scope.finalSubmit = function() {
 		  // $scope.confirmationModal.hide();
 		  $scope.composeIdeaModal.hide();
-			var obj = {};
-			// {
-			// 	"agcid": "82040",
-			// 	"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
-			// 	"zipcd": "63104-3915",
-			// 	"agc_ADDR_LONGITUDE": "-90.20798",
-			// 	"agc_ADDR_LATITUDE": "38.602318",
-			// 	"reporter": $scope.newShelter.name,
-			// 	"dateReported": $scope.newShelter.dob.toString(),
-			// 	"reporterPhone":$scope.newShelter.phone,
-			// 	"reporterEmail":$scope.newShelter.email,
-			// 	"address":$scope.newShelter.address,
-			// 	"desc":$scope.newShelter.desc,
-			// }
+			var obj = 
+			{
+				"agcid": "82040",
+				"nme": "YOUTH EDUCATION AND HEALTH IN SOULARD",
+				"zipcd": "63104-3915",
+				"agc_ADDR_LONGITUDE": $scope.currentCoords.lon,
+				"agc_ADDR_LATITUDE": $scope.currentCoords.lat,
+				"reporter": $scope.newShelter.name,
+				"dateReported": $scope.newShelter.dob.toString(),
+				"reporterPhone":$scope.newShelter.phone,
+				"reporterEmail":$scope.newShelter.email,
+				"address":$scope.newShelter.address,
+				"desc":$scope.newShelter.desc,
+			};
+
+
+							$timeout(function(){
+										streetLightMarkers.$add(obj); 
+									},500);  
+								
 			
-			// $scope.openbeds.push();
-			$timeout(function(){
-				$scope.streetlights.$add(obj); 
-			},400);
+		
 				
 		 }
 
 
-		 $scope.addPicture = function() {
-			 console.log('Add picture');
-		 }
+	
+
+	 		/////// PICTURE /////////
+		$scope.useLocation = true;
+	 
+	  $scope.removePicture = function() {
+		  $scope.imageData = false;
+	  }
+	  $scope.addPicture = function(upload) {
+		  console.log('adding picture');
+		  document.addEventListener("deviceready", function () {
+			  var options = {
+				      quality: 90,
+				      destinationType: Camera.DestinationType.DATA_URL,
+				      // sourceType: Camera.PictureSourceType.CAMERA, // CAMERA or PHOTOLIBRARY
+				      allowEdit: true,
+				      encodingType: Camera.EncodingType.JPEG,
+				      targetWidth: 200,
+				      targetHeight: 200,
+				      popoverOptions: CameraPopoverOptions,
+				      saveToPhotoAlbum: false,
+				      correctOrientation:true
+				    };
+
+						if(upload) {
+							options.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+						} else {
+							options.sourceType = Camera.PictureSourceType.CAMERA;
+						}
+
+
+				    $cordovaCamera.getPicture(options).then(function(imageData) {
+							$scope.imageData = imageData;
+				    
+				    	console.log('Pic Taken',$scope.imageData);
+//				      var image = document.getElementById('myImage');
+//				      image.src = "data:image/jpeg;base64," + imageData;
+				    }, function(err) {
+				      // error
+								console.log('Error in taking picture');
+								
+				    });
+
+				
+		  },false);
+		 
+	};
+	
+			///////// PICTURE /////////
+
 	//// Report New Street Light ///
 		
 	$scope.getPic = function(report) {
