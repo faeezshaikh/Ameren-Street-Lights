@@ -159,6 +159,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 				"reporterEmail":$scope.newShelter.email,
 				"address":$scope.newShelter.address,
 				"desc":$scope.newShelter.desc,
+				"cameraPic":$scope.imageData || null
 			};
 
 
