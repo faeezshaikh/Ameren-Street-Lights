@@ -50,7 +50,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		 NgMap.getMap().then(function(map) {
 			    console.log(map.getCenter());
 			    $scope.map = map;
-					$scope.mapIcon= 'img/medical.png';
+					$scope.mapIcon= 'img/light.png';
 			    console.log('markers', map.markers);
 			    
 			  });
@@ -58,7 +58,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	
 	$scope.streetlightsSelected = function(){
 			$scope.mapMarkers = streetLightMarkers;
-			$scope.mapIcon= 'img/medical.png';
+			$scope.mapIcon= 'img/light.png';
 			// $scope.showStreetLightMarkers = true;
 			$scope.vegetationSelected = false;
 			$scope.ligthstyle = {background:'#33cd5f',color:'white'};
@@ -68,7 +68,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 	$scope.vegetationSelected = function(){
 		$scope.mapMarkers = vegetationMarkers;
-		$scope.mapIcon= 'img/shelters.png';
+		$scope.mapIcon= 'img/veg.png';
 		// $scope.showStreetLightMarkers = false;
 
 		$scope.vegetationSelected = true;
