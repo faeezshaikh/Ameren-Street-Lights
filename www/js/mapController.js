@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('MapCtrl', function($scope, auth, store, $state, $timeout, 
 HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocialSharing,localStorage,$ionicModal
-,$ionicScrollDelegate,FIREBASE_URL,$cordovaCamera,$cordovaGeolocation,$cordovaLaunchNavigator,$window,$rootScope,NgMap,$filter) {
+,$ionicScrollDelegate,FIREBASE_URL,$cordovaCamera,$cordovaGeolocation,$cordovaLaunchNavigator,$window,$rootScope,NgMap,$filter,PersonService) {
 
 	$scope.currentCoords;
 	$scope.map;
@@ -72,7 +72,6 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		// $scope.showStreetLightMarkers = false;
 
 		$scope.vegetationSelected = true;
-
 		$scope.ligthstyle = {background:''};
 		$scope.vegstyle = {background:'#33cd5f','color':'white'};
 	}
@@ -83,7 +82,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		console.log('Show Detail111 called!', agent);
 		
 		$scope.agent1 = agent;
-			$scope.map.showInfoWindow('foo-iw', agent.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
+			$scope.map.showInfoWindow('foo-iw', $scope.agent1.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
 					console.log('vegetation window');
 	  };
 	
@@ -159,7 +158,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 				"reporterEmail":$scope.newShelter.email,
 				"address":$scope.newShelter.address,
 				"desc":$scope.newShelter.desc,
-				"cameraPic":$scope.imageData || null
+				"cameraPic":$scope.imageData || null,
+				"reporterPic" : PersonService.GetUserDetails().img
 			};
 
 

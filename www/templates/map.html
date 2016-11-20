@@ -25,7 +25,9 @@ map {
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    vertical-align:middle;
 }
+
 th, td {
     padding: 5px;
     text-align: left;
@@ -99,17 +101,26 @@ th{
                                <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Navigate</div >
                             </td>
                           </tr>
+                          
                           <tr>
-                            <th rowspan="2">Reporter:</th>
-                            <td>Name: Gary Jobe</td>
-                             <td rowspan="2">
-                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Call</div >
+                            <th rowspan="1">Reporter:</th>
+                            <td>
+                              Name: {{agent1.reporter}} <br/>
+                              Cell: {{agent1.reporterPhone}}
+                              </td>
+                             <td rowspan="1">
+                               <img src="{{agent1.reporterPic}}" width="50" height="auto" 
+                                    style="border-radius:50%;border:2px solid;border-color:white;display: block; margin-left: auto; margin-right: auto;">
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">
+                                  
+                                 Call</div >
                             </td>
                           </tr>
-                          <tr>
-                            <td>Cell: 314-987-9834</td>
+                          <!--<tr>
+                            <td>Cell: {{agent1.reporterPhone}}</td>
                              
-                          </tr>
+                          </tr>-->
+                           
                           <tr>
                             <th>Status:</th>
                             <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
