@@ -17,7 +17,10 @@
 "services": "DFC,FBC,HMC,PPC,RHC,RMC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Mary Heger",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Mary.jpg"
 },
 {
 "agcid": "83421",
@@ -37,7 +40,10 @@
 "services": "DFC,FHW,PPC,PPW,RHC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Mary Rice",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/MaryRice.jpg"
 },
 {
 "agcid": "80340",
@@ -57,7 +63,10 @@
 "services": "DFC,PPC,RHC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Balaji",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Balaji.jpg"
 },
 {
 "agcid": "80341",
@@ -77,7 +86,10 @@
 "services": "DFC,PPC,RHC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Balaji",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Balaji.jpg"
 },
 {
 "agcid": "90179",
@@ -97,7 +109,10 @@
 "services": "FBC,PPC,PPW",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Craig Yale",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Craig.jpg"
 },
 {
 "agcid": "84373",
@@ -117,7 +132,10 @@
 "services": "DFC,FBC,FHW,NDW,PLW,PPC,PPW",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Eric Robinson",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Eric.jpg"
 },
 {
 "agcid": "80131",
@@ -137,7 +155,10 @@
 "services": "DFC,NDW,PLW,PPC,PPW,RHC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Joyce Sanders",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Joyce.jpg"
 },
 {
 "agcid": "80797",
@@ -157,7 +178,10 @@
 "services": "DFC,HMC,RHC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Kelly Stottler",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Kelly.jpg"
 },
 {
 "agcid": "81462",
@@ -177,7 +201,10 @@
 "services": "DFC,FBC,HIC,PPC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Owen Doyle",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Owen.jpg"
 },
 {
 "agcid": "82451",
@@ -197,7 +224,10 @@
 "services": "HMC,RHC,RMC",
 "date":"",
 "time":"",
-"requirement":"Veterans only"
+"requirement":"Veterans only",
+"reporter": "Pam Anders",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Pam.jpg"
 },
 {
 "agcid": "80342",
@@ -217,7 +247,10 @@
 "services": "RHC,RMC",
 "date":"",
 "time":"",
-"requirement":"Families only"
+"requirement":"Families only",
+"reporter": "Rick Lang",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Rick.jpg"
 },
 {
 "agcid": "82159",
@@ -237,6 +270,9 @@
 "services": "FBC,FBW,FHW,HMC,PLW,PPC,PPW",
 "date":"",
 "time":"",
-"requirement":"Families only"
+"requirement":"Families only",
+"reporter": "Tom Rice",
+"reporterPhone":"314-987-3456",
+"reporterPic":"https://s3-us-west-2.amazonaws.com/amerenppl/Tom.jpg"
 }
 ]
