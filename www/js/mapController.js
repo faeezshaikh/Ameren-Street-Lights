@@ -26,15 +26,15 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 		var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
-		streetLightMarkers = $firebaseArray(scrollRef);
-		$scope.mapMarkers = streetLightMarkers;
+		$scope.lightMarkers = $firebaseArray(scrollRef);
+		// $scope.mapMarkers = streetLightMarkers;
 		scrollRef.scroll.next(100);
 		
 
 
 		var vegRef = new Firebase(FIREBASE_URL + '/vegetation');
 	  var scrollRef1 = new Firebase.util.Scroll(vegRef, 'agcid');
-		vegetationMarkers = $firebaseArray(scrollRef1);
+		$scope.vegetationMarkers = $firebaseArray(scrollRef1);
 		scrollRef1.scroll.next(100);
 
 		$scope.ligthstyle = {background:'#33cd5f',color:'white'};
@@ -57,9 +57,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	}
 	
 	$scope.streetlightsSelected = function(){
-			$scope.mapMarkers = streetLightMarkers;
+			// $scope.mapMarkers = streetLightMarkers;
 			$scope.mapIcon= 'img/light2.png';
-			// $scope.showStreetLightMarkers = true;
 			$scope.vegetationSelected = false;
 			$scope.ligthstyle = {background:'#33cd5f',color:'white'};
 		$scope.vegstyle = {background:''};
@@ -67,10 +66,8 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 
 	$scope.vegetationSelected = function(){
-		$scope.mapMarkers = vegetationMarkers;
+		// $scope.mapMarkers = vegetationMarkers;
 		$scope.mapIcon= 'img/veg2.png';
-		// $scope.showStreetLightMarkers = false;
-
 		$scope.vegetationSelected = true;
 		$scope.ligthstyle = {background:''};
 		$scope.vegstyle = {background:'#33cd5f','color':'white'};
@@ -83,9 +80,17 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		
 		$scope.agent1 = agent;
 			$scope.map.showInfoWindow('foo-iw', $scope.agent1.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
-					console.log('vegetation window');
+					console.log('light window');
 	  };
 	
+
+		$scope.showDetailVegetation = function(e, agent) {
+		console.log('Show Detail-veg called!', agent);
+		
+		$scope.agent1_veg = agent;
+			$scope.map.showInfoWindow('foo-iw-veg', $scope.agent1_veg.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
+					console.log('vegetation window');
+	  };
 	// Calculate distance of each agency from current location
 	$scope.getDistance = function(agent) {
 		return CtrlService.getDistanceFromLatLonInMiles($scope.currentCoords.lat,$scope.currentCoords.lon,agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE);

@@ -74,7 +74,7 @@ th{
            		 <!--<marker position="{{[currentCoords.lat,currentCoords.lon]}}" icon="img/here.png"></marker>-->
            		 
                 <!--Street Lights-->
-           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in mapMarkers" 
+           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in lightMarkers" 
            		 		position="{{[agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE]}}"
            		 		on-click="showDetail(event,agent)"
 										icon="{{mapIcon}}"
@@ -89,9 +89,9 @@ th{
                           <img style="max-width:50%;max-height:50%" class="text-center" ng-src="{{getPic(agent1)}}"/>
                         </div>
 
-                        <div class="text-center" ng-show="vegetationSelected==true">
+                        <!--<div class="text-center">
                           <img style="max-width:60%;max-height:60%" class="text-center" ng-src="https://ridingwiththetopdown.files.wordpress.com/2011/08/004.jpg"/>
-                        </div>
+                        </div>-->
 
                         <table style="width:100%">
                           <tr>
@@ -143,6 +143,73 @@ th{
 
 
 
+
+ <!--Vegetation Markers -->
+           		 <marker id='{{agent_veg.agcid}}'  ng-repeat = "agent_veg in vegetationMarkers" 
+           		 		position="{{[agent_veg.agc_ADDR_LATITUDE,agent_veg.agc_ADDR_LONGITUDE]}}"
+           		 		on-click="showDetailVegetation(event,agent_veg)"
+										icon="{{mapIcon}}"
+										animation = "DROP"
+           		 		clickable="true">
+
+                <info-window
+                      id="foo-iw-veg" >
+                    <div ng-non-bindable="" >
+                      <div class="contents" >
+                        <div class="text-center">
+                          <img style="max-width:50%;max-height:50%" class="text-center" ng-src="{{getPic(agent1_veg)}}"/>
+                        </div>
+
+                        <div class="text-center" >
+                          <img style="max-width:60%;max-height:60%" class="text-center" ng-src="https://ridingwiththetopdown.files.wordpress.com/2011/08/004.jpg"/>
+                        </div>
+
+                        <table style="width:100%">
+                          <tr>
+                            <th>Location:</th>
+                            <td>3310 Brunswick drive, Florissant, MO 64044</td>
+                            <td>
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Navigate</div >
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <th rowspan="1">Reporter:</th>
+                            <td>
+                              Name: {{agent1_veg.reporter}} <br/>
+                              Cell: {{agent1_veg.reporterPhone}}
+                              </td>
+                             <td rowspan="1">
+                               <img src="{{agent1_veg.reporterPic}}" width="50" height="auto" 
+                                    style="border-radius:50%;border:2px solid;border-color:white;display: block; margin-left: auto; margin-right: auto;">
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">
+                                  
+                                 Call</div >
+                            </td>
+                          </tr>
+                          <!--<tr>
+                            <td>Cell: {{agent1.reporterPhone}}</td>
+                             
+                          </tr>-->
+                           
+                          <tr>
+                            <th>Status:</th>
+                            <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
+                            <td>
+                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Update</div >
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Nearby Trucks:</th>
+                            <td>5  <i style="color:green;" class="fa fa-truck fa-2x"></i></td>
+                            <td>
+                               <a class="button button-small button-balanced" href="#/app/trucks/{{agent1.$id}}">Dispatch</a >
+                            </td>
+                          </tr>
+                        </table>
+                      </div >
+                    </div >
+                  </info-window >
               
            		
            		 
