@@ -7,7 +7,9 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	$scope.map;
 	var all = [];
 	$scope.showPlusButton = true;
-	var streetLightMarkers,vegetationMarkers;
+	
+	
+	// var $scope.mapMarkers,vegetationMarkers;
 	
 
 
@@ -22,22 +24,24 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		lat = $scope.currentCoords.lat;
 		lon = $scope.currentCoords.lon;
 
-	
+	$scope.data = {
+				demographic:'Lights'
+			};
 
 		var baseRef = new Firebase(FIREBASE_URL + '/streetlights');
 	  var scrollRef = new Firebase.util.Scroll(baseRef, 'agcid');
-		$scope.lightMarkers = $firebaseArray(scrollRef);
-		// $scope.mapMarkers = streetLightMarkers;
+		$scope.mapMarkers = $firebaseArray(scrollRef);
+		all = $scope.mapMarkers;
 		scrollRef.scroll.next(100);
 		
 
 
-		var vegRef = new Firebase(FIREBASE_URL + '/vegetation');
-	  var scrollRef1 = new Firebase.util.Scroll(vegRef, 'agcid');
-		$scope.vegetationMarkers = $firebaseArray(scrollRef1);
-		scrollRef1.scroll.next(100);
+		// var vegRef = new Firebase(FIREBASE_URL + '/vegetation');
+	  // var scrollRef1 = new Firebase.util.Scroll(vegRef, 'agcid');
+		// $scope.vegetationMarkers = $firebaseArray(scrollRef1);
+		// scrollRef1.scroll.next(100);
 
-		$scope.ligthstyle = {background:'#33cd5f',color:'white'};
+		// $scope.ligthstyle = {background:'#33cd5f',color:'white'};
 		mapInit();
 
 	};
@@ -51,29 +55,34 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 			    console.log(map.getCenter());
 			    $scope.map = map;
 					$scope.mapIcon= 'img/light2.png';
-			    console.log('markers', map.markers);
+			    // console.log('markers', map.markers);
 			    
 			  });
 	}
 	
-	$scope.streetlightsSelected = function(){
-			// $scope.mapMarkers = streetLightMarkers;
-			$scope.mapIcon= 'img/light2.png';
-			$scope.vegetationSelected = false;
-			$scope.ligthstyle = {background:'#33cd5f',color:'white'};
-		$scope.vegstyle = {background:''};
-	}
+	// $scope.streetlightsSelected = function(){
+	// 		$scope.mapIcon= 'img/light2.png';
+	// 		$scope.vegetationSelected = false;
+	// 		$scope.ligthstyle = {background:'#33cd5f',color:'white'};
+	// 	$scope.vegstyle = {background:''};
+	// }
 
 
-	$scope.vegetationSelected = function(){
-		// $scope.mapMarkers = vegetationMarkers;
-		$scope.mapIcon= 'img/veg2.png';
-		$scope.vegetationSelected = true;
-		$scope.ligthstyle = {background:''};
-		$scope.vegstyle = {background:'#33cd5f','color':'white'};
-	}
+	// $scope.vegetationSelected = function(){
+	// 	$scope.mapIcon= 'img/veg2.png';
+	// 	$scope.vegetationSelected = true;
+	// 	$scope.ligthstyle = {background:''};
+	// 	$scope.vegstyle = {background:'#33cd5f','color':'white'};
+	// }
 
 
+
+	$scope.$watch('data.demographic',function(){
+		
+		console.log('Printing..',$scope.mapMarkers);
+		// if($scope.data.demographic == 'Lights') { console.log('Changed !',$scope.data.demographic);$scope.mapMarkers = $filter('filter')(all, { type: 'Lit' }); }
+		// if($scope.data.demographic == 'Vegetation')  { console.log('Changed !',$scope.data.demographic);  $scope.mapMarkers = $filter('filter')(all, { type: 'Veg' }); }
+    });
 
 	$scope.showDetail = function(e, agent) {
 		console.log('Show Detail111 called!', agent);
@@ -84,13 +93,13 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 	  };
 	
 
-		$scope.showDetailVegetation = function(e, agent) {
-		console.log('Show Detail-veg called!', agent);
+		// $scope.showDetailVegetation = function(e, agent) {
+		// console.log('Show Detail-veg called!', agent);
 		
-		$scope.agent1_veg = agent;
-			$scope.map.showInfoWindow('foo-iw-veg', $scope.agent1_veg.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
-					console.log('vegetation window');
-	  };
+		// $scope.agent1_veg = agent;
+		// 	$scope.map.showInfoWindow('foo-iw-veg', $scope.agent1_veg.agcid);  // if issues with anchoring info-window to the marker , see https://github.com/allenhwkim/angularjs-google-maps/issues/505
+		// 			console.log('vegetation window');
+	  // };
 	// Calculate distance of each agency from current location
 	$scope.getDistance = function(agent) {
 		return CtrlService.getDistanceFromLatLonInMiles($scope.currentCoords.lat,$scope.currentCoords.lon,agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE);
@@ -141,7 +150,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 					dob: new Date(),
 					phone: '314-876-3452',
 					email: 'johnny@gmail.com',
-					address: '30 Plaza Sq. St Louis MO 63010',
+					address: '1901 Chouteau Ave. St Louis MO 63101',
 					desc:'Light keeps flickering. Has been doing that for several days now.'
 				};
 			}
@@ -169,7 +178,7 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 
 
 							$timeout(function(){
-										streetLightMarkers.$add(obj); 
+										$scope.mapMarkers.$add(obj); 
 									},500);  
 								
 			

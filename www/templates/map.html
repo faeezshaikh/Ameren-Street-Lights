@@ -59,12 +59,18 @@ th{
       <ion-content view-title="Hud agents" header-shrink scroll-event-interval="5" delegate-handle="hudagents" scroll="false">
     
 
-     <div class="button-bar padding">
+     <!--<div class="button-bar padding">
         <div class="button-bar">
             <a class="round"  ng-click="streetlightsSelected()" ng-style="ligthstyle" ><div class="text-center">Street Lights</div></a>
             <a class="round2" ng-click="vegetationSelected()" ng-style="vegstyle"><div class="text-center">Vegetation</div></a>
         </div>
-    </div>
+    </div>-->
+<!--
+    <div class="button-bar padding">
+      <a grouped-radio="'Lights'" ng-model="data.demographic">Street Lights</a>
+       <a grouped-radio="'Vegetation'" ng-model="data.demographic">Vegetation</a>
+    </div>-->
+
 		    <!-- Map Start -->
            <map center="{{currentCoords.lat}},{{currentCoords.lon}}"
            		zoom="10"
@@ -74,7 +80,7 @@ th{
            		 <!--<marker position="{{[currentCoords.lat,currentCoords.lon]}}" icon="img/here.png"></marker>-->
            		 
                 <!--Street Lights-->
-           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in lightMarkers" 
+           		 <marker id='{{agent.agcid}}'  ng-repeat = "agent in mapMarkers" 
            		 		position="{{[agent.agc_ADDR_LATITUDE,agent.agc_ADDR_LONGITUDE]}}"
            		 		on-click="showDetail(event,agent)"
 										icon="{{mapIcon}}"
@@ -96,7 +102,7 @@ th{
                         <table style="width:100%">
                           <tr>
                             <th>Location:</th>
-                            <td>3310 Brunswick drive, Florissant, MO 64044</td>
+                            <td>{{agent1.address}}</td>
                             <td>
                                <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Navigate</div >
                             </td>
@@ -125,7 +131,7 @@ th{
                             <th>Status:</th>
                             <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
                             <td>
-                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Update</div >
+                               <a class="button button-small button-balanced" href="#/app/trucks/{{agent1.$id}}/yes">Update</a >
                             </td>
                           </tr>
                           <tr>
@@ -145,7 +151,7 @@ th{
 
 
  <!--Vegetation Markers -->
-           		 <marker id='{{agent_veg.agcid}}'  ng-repeat = "agent_veg in vegetationMarkers" 
+           		 <!--<marker id='{{agent_veg.agcid}}'  ng-repeat = "agent_veg in vegetationMarkers" 
            		 		position="{{[agent_veg.agc_ADDR_LATITUDE,agent_veg.agc_ADDR_LONGITUDE]}}"
            		 		on-click="showDetailVegetation(event,agent_veg)"
 										icon="{{mapIcon}}"
@@ -187,11 +193,7 @@ th{
                                  Call</div >
                             </td>
                           </tr>
-                          <!--<tr>
-                            <td>Cell: {{agent1.reporterPhone}}</td>
-                             
-                          </tr>-->
-                           
+                      
                           <tr>
                             <th>Status:</th>
                             <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
@@ -213,7 +215,7 @@ th{
               
            		
            		 
-           		 </marker> 	
+           		 </marker> 	-->
                   <!--Street Lights-->
 
 

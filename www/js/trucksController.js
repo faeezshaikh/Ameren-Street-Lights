@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window) {
+.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window,ionicToast) {
   
 
     function animate() {
@@ -54,7 +54,12 @@ angular.module('starter.controllers')
 
     //// For the selected incident get details /////
     $scope.incidentID = $stateParams.incidentId;
+    $scope.statusParam = $stateParams.status;
+
     console.log('incidentID -->', $scope.incidentID);
+    console.log('statusParam -->', $scope.statusParam);
+
+    if($scope.statusParam == 'yes') foo();
   
     var incidentRef = new Firebase(FIREBASE_URL + '/streetlights/' + $scope.incidentID);
 	var incident;
@@ -94,15 +99,19 @@ angular.module('starter.controllers')
         }
 
         $scope.activitySelected = function() {
-                 $scope.showTrucks = false;
+          foo();
+            
+        }
+        
+
+        function foo() {
+                   $scope.showTrucks = false;
                 $scope.showChat = false;
                 $scope.showActivity = true;
                 $scope.chatStyle={color:''};
                 $scope.trucksStyle={color:''};
                 $scope.activityStyle={color:'#A3FD93'};  
-            
         }
-        
         
 
 
@@ -168,6 +177,10 @@ angular.module('starter.controllers')
 
         ///// [ Chat End ] ////
   
+
+        $scope.dispatchTruck = function() {
+            ionicToast.show('Truck dispatched successfully.', 'bottom', false, 1500);
+        }
 })
 
 
