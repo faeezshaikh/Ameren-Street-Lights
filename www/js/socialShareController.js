@@ -2,7 +2,7 @@ angular.module('starter.controllers')
 
 .controller('SocialShareCtrl', function($scope,$cordovaSocialSharing) {
 	
- var message = "Check out the new Friend In Need App in the app store.";
+ var message = "Check out the new Ameren App for Street Lights in the app store.";
  var image = "https://s3-us-west-2.amazonaws.com/amerenppl/icon.png";
  var link = "https://play.google.com/store/apps/details?id=com.ionicframework.awsArch";
  var subject = "The Friend In Need App";

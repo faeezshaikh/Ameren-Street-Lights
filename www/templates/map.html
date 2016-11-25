@@ -102,9 +102,10 @@ th{
                         <table style="width:100%">
                           <tr>
                             <th>Location:</th>
-                            <td>{{agent1.address}}</td>
+                            <td>{{agent1.address}} <!--&nbsp;<i style="color:blue;" class="fa fa-location-arrow fa-lg" aria-hidden="true"></i>-->
+                            </td>   
                             <td>
-                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">Navigate</div >
+                               <div class="button button-small button-balanced" ng-click="launchNav(agent1)">Navigate</div >
                             </td>
                           </tr>
                           
@@ -112,14 +113,14 @@ th{
                             <th rowspan="1">Reporter:</th>
                             <td>
                               Name: {{agent1.reporter}} <br/>
-                              Cell: {{agent1.reporterPhone}}
+                              Cell: {{agent1.reporterPhone}} &nbsp; <!--<i style="color:green;"  class="fa fa-phone fa-lg" aria-hidden="true"></i>-->
                               </td>
                              <td rowspan="1">
                                <img src="{{agent1.reporterPic}}" width="50" height="auto" 
                                     style="border-radius:50%;border:2px solid;border-color:white;display: block; margin-left: auto; margin-right: auto;">
-                               <div class="button button-small button-balanced" ng-click="openDirections(yelp.cafe)">
+                               <a class="button button-small button-balanced" href="{{getTelephone(agent1.phone1)}}" >
                                   
-                                 Call</div >
+                                  &nbsp;Call</a>
                             </td>
                           </tr>
                           <!--<tr>
@@ -129,14 +130,14 @@ th{
                            
                           <tr>
                             <th>Status:</th>
-                            <td>Open <i style="color:red;" class="ion ion-flag"></i></td>
+                            <td>Open <i style="color:red;" class="ion ion-flag fa-lg"></i></td>
                             <td>
                                <a class="button button-small button-balanced" href="#/app/trucks/{{agent1.$id}}/yes">Update</a >
                             </td>
                           </tr>
                           <tr>
                             <th>Nearby Trucks:</th>
-                            <td>5  <i style="color:green;" class="fa fa-truck fa-2x"></i></td>
+                            <td>9 <i style="color:green;" class="fa fa-truck fa-2x"></i></td>
                             <td>
                                <a class="button button-small button-balanced" href="#/app/trucks/{{agent1.$id}}">Dispatch</a >
                             </td>

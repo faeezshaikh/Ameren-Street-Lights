@@ -119,6 +119,15 @@ HudService,$stateParams, $cordovaToast,$firebaseArray,CtrlService,$cordovaSocial
 		 $scope.$broadcast('scroll.refreshComplete');
 	  }
 	 
+	 $scope.getTelephone = function(num) {
+		 console.log('Tel called');
+		 
+		if(num) {
+			return "tel:1-"+num;
+		} else {
+			return "tel:1-314-814-6195";
+		}
+	}
 
 
 
