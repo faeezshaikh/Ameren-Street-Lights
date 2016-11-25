@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('TrucksCtrl', function($scope, $stateParams, $timeout, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window,ionicToast) {
+.controller('TrucksCtrl', function($scope, $stateParams, $timeout,$ionicModal, PersonService,ionicMaterialMotion, ionicMaterialInk,FIREBASE_URL,CtrlService,$firebaseArray,$ionicScrollDelegate,$window,ionicToast) {
   
 
     function animate() {
@@ -181,6 +181,30 @@ angular.module('starter.controllers')
         $scope.dispatchTruck = function() {
             ionicToast.show('Truck dispatched successfully.', 'bottom', false, 1500);
         }
+
+
+        ///////// Enlarge Picture /////////
+
+         $ionicModal.fromTemplateUrl('templates/enlargePictureModal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.picModal = modal;
+		});
+
+      
+		$scope.openComposer = function() {
+            
+      
+		 	$scope.picModal.show();
+	  }
+  
+	  $scope.closeComposer = function() {
+		  $scope.picModal.hide();
+	  }
+
+
+        ///////// Enlarge Picture //////////
 })
 
 

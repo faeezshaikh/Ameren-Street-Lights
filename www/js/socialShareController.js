@@ -3,9 +3,9 @@ angular.module('starter.controllers')
 .controller('SocialShareCtrl', function($scope,$cordovaSocialSharing) {
 	
  var message = "Check out the new Ameren App for Street Lights in the app store.";
- var image = "https://s3-us-west-2.amazonaws.com/amerenppl/icon.png";
+ var image = "https://s3-us-west-2.amazonaws.com/amerenppl/streetLightsicon.png";
  var link = "https://play.google.com/store/apps/details?id=com.ionicframework.awsArch";
- var subject = "The Friend In Need App";
+ var subject = "Ameren Street Lights App";
  var smsMessage = message + ": " + link;
  
 	$scope.shareFb = function() {

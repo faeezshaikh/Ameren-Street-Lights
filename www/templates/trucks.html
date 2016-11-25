@@ -4,12 +4,12 @@
     <link href="css/md-custom.css" rel="stylesheet">
 
   <!--<div class="hero slide-up" style="background-image: url('http://jamestownbpu.com/electric/power_pole_numbers.jpg');">-->
-        <div class="hero slide-up" style="margin-top:40px!important; background-image: url('{{backgroundImg}}');" ng-click="expand()">
+        <div class="hero slide-up" style="margin-top:40px!important; background-image: url('{{backgroundImg}}');"  ng-click="openComposer()">
 
             <div class="content">
                 <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
                 <!--<div class="avatar" style="background-image: url('{{imgUrl}}');"></div>-->
-                <div class="avatar" ng-click="reload()" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
+                <div class="avatar" ng-click="openComposer()" style="background-image: url('http://aqabaonline.com/wp-content/uploads/cache/images/2016/07/icon-repair/icon-repair-517568787.png');"></div>
                 <!--https://www.iconexperience.com/_img/g_collection_png/standard/512x512/delivery_truck.png-->
                 <h3><a class="light">{{name}}</a></h3>
                 <h4>{{name}}</h4>
@@ -162,7 +162,7 @@
                 <!--<h4 class="content padding double-padding-x">Status History</h4>-->
                 <table style="width:100%">
                      <tr style="outline: thin solid">
-                        <td  width="50%"><img style="max-width:70%;max-height:70%;" ng-src="{{backgroundImg}}"/></td>
+                        <td  width="50%"><img style="max-width:70%;max-height:70%;" ng-src="{{backgroundImg}}" ng-click="openComposer()"/></td>
                         <td  width="50%" style="vertical-align:top; text-align:left;">Issue: 
                             <ul>
                                 <li type="square"> Lights flickering.</li>

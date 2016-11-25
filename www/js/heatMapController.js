@@ -4,10 +4,10 @@ angular.module('starter.controllers')
    
 
    var heatmap, vm = this;
-    NgMap.getMap().then(function(map) {
-      vm.map = map;
-      heatmap = vm.map.heatmapLayers.foo;
-    });
+    // NgMap.getMap().then(function(map) {
+      // vm.map = map;
+      // heatmap = vm.map.heatmapLayers.foo;
+    // });
 
     vm.toggleHeatmap= function(event) {
       heatmap.setMap(heatmap.getMap() ? null : vm.map);
